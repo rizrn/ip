@@ -36,7 +36,8 @@ public class TaskList {
 
         this.tasks[this.size++] = t;
         return "Upah! You're busy! I added this task: \n" +
-                t.toString();
+                t.toString() +
+                "\nYou have " + this.size + " tasks now";
     }
 
     public boolean isEmpty() {
@@ -54,7 +55,7 @@ public class TaskList {
     public String unmarkTask(int index) {
         StringBuffer sb = new StringBuffer();
         this.tasks[index].unmark();
-        sb.append("Upah? The task has was not completed after all :(");
+        sb.append("Upah? The task has was not completed after all :(\n");
         sb.append(this.getTaskName(index));
         return sb.toString();
     }
