@@ -10,15 +10,25 @@ public class TaskList {
     }
     public String addTask(String name, String taskType) {
         Task t;
+        String[] tmp;
+
         switch (taskType){
             case "deadline":
-                t = new DeadlineTask(name);
+                tmp = name.split("/by ");
+                String deadlineSubject = tmp[0];
+                String dueDate = tmp[1];
+                t = new DeadlineTask(deadlineSubject, dueDate);
                 break;
             case "todo":
                 t = new TodoTask(name);
                 break;
             case "event":
-                t = new EventTask(name);
+                tmp = name.split("/from ");
+                String eventSubject = tmp[0];
+                String[] tmp2 = tmp[1].split("/to ");
+                String startTime = tmp2[0];
+                String endTime = tmp2[1];
+                t = new EventTask(eventSubject, startTime, endTime);
                 break;
             default:
                 t = new TodoTask(name); //placeholder

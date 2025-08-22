@@ -39,6 +39,12 @@ public class WoopLogic {
                 case "todo":
                     System.out.println(this.taskList.addTask(descriptor, "todo"));
                     break;
+                case "deadline":
+                    System.out.println(this.taskList.addTask(descriptor, "deadline"));
+                    break;
+                case "event":
+                    System.out.println(this.taskList.addTask(descriptor, "event"));
+                    break;
             }
 
             userInput = this.sc.nextLine();
