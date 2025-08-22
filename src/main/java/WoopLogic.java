@@ -1,20 +1,25 @@
 import java.util.Scanner;
 public class WoopLogic {
     private final Scanner sc;
-    private static final String exit = "bye";
+    private static final String EXIT = "bye";
+    private TaskList taskList;
+
     public WoopLogic() {
         this.sc = new Scanner(System.in);
+        this.taskList = new TaskList();
     }
 
     public void run() {
         String userInput = this.sc.nextLine();
+
         while (!checkExit(userInput)) {
-            System.out.println(userInput);
+            this.taskList.addTask(userInput);
+            System.out.println("added " + userInput);
             userInput = this.sc.nextLine();
         }
     }
     private boolean checkExit(String userInput) {
-        return userInput.equals(exit);
+        return userInput.equals(EXIT);
     }
 
 }
