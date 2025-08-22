@@ -8,5 +8,6 @@ public class Woop {
         String endMessage = "Bye. Hope to see you again soon!";
         System.out.println(startMessage);
         echo.echoMessage();
+        System.out.println(endMessage);
     }
 }

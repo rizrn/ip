@@ -8,10 +8,9 @@ public class Echo {
 
     public void echoMessage() {
         String userInput = this.sc.nextLine();
-        System.out.println(userInput);
         while (!checkExit(userInput)) {
-            userInput = this.sc.nextLine();
             System.out.println(userInput);
+            userInput = this.sc.nextLine();
         }
     }
 
