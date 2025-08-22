@@ -30,9 +30,11 @@ public class WoopLogic {
                 case "mark":
                     listIndex = getListIndex(userInput);
                     this.taskList.markTask(listIndex);
+                    break;
                 case "unmark":
                     listIndex = getListIndex(userInput);
                     this.taskList.unmarkTask(listIndex);
+                    break;
                 default:
                     this.taskList.addTask(userInput);
                     System.out.println("Upah! I have added: " + userInput + "!");
@@ -45,7 +47,7 @@ public class WoopLogic {
     private int getListIndex(String text) {
         String tmp;
         tmp = text.split(" ")[1];
-        return Integer.parseInt(tmp) - 1;
+        return Integer.parseInt(tmp) - 1; // go back to 0-indexing
     }
     private boolean checkExit(String userInput) {
         return userInput.equals(EXIT);
