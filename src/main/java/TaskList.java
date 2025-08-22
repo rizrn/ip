@@ -17,6 +17,14 @@ public class TaskList {
         return this.size == 0;
     }
 
+    public boolean markTask(int index) {
+        return this.tasks[index].mark();
+    }
+
+    public boolean unmarkTask(int index) {
+        return this.tasks[index].unmark();
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
