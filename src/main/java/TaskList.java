@@ -8,7 +8,7 @@ public class TaskList {
         this.tasks = new Task[MAX_SIZE];
         this.size = 0;
     }
-    public void addTask(String name, String taskType) {
+    public String addTask(String name, String taskType) {
         Task t;
         switch (taskType){
             case "deadline":
@@ -25,6 +25,8 @@ public class TaskList {
         }
 
         this.tasks[this.size++] = t;
+        return "Upah! You're busy! I added this task: \n" +
+                t.toString();
     }
 
     public boolean isEmpty() {

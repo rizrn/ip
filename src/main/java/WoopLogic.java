@@ -15,6 +15,7 @@ public class WoopLogic {
 
         String userInput = this.sc.nextLine();
         String command = userInput.split(" ")[0];
+        String descriptor = getDescriptor(userInput);
 
         while (!checkExit(userInput)) {
             switch (command) {
@@ -35,19 +36,27 @@ public class WoopLogic {
                     listIndex = getListIndex(userInput);
                     System.out.println(this.taskList.unmarkTask(listIndex));
                     break;
-                default:
-                    this.taskList.addTask(userInput, "todo");
-                    System.out.println("Upah! I have added: " + userInput + "!");
+                case "todo":
+                    System.out.println(this.taskList.addTask(descriptor, "todo"));
+                    break;
             }
 
             userInput = this.sc.nextLine();
             command = userInput.split(" ")[0];
+            descriptor = getDescriptor(userInput);
         }
     }
     private int getListIndex(String text) {
         String tmp;
         tmp = text.split(" ")[1];
         return Integer.parseInt(tmp) - 1; // go back to 0-indexing
+    }
+    private String getDescriptor(String text) {
+        int tmp = text.indexOf(" ");
+        if (tmp >= 0 && (tmp + 1) < text.length()) {
+            return text.substring(tmp + 1);
+        }
+        return "";
     }
     private boolean checkExit(String userInput) {
         return userInput.equals(EXIT);
