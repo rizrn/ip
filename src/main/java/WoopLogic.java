@@ -14,12 +14,18 @@ public class WoopLogic {
 
         while (!checkExit(userInput)) {
             switch (userInput) {
-                case "list":
-                    System.out.println(this.taskList);
+                case "list": //
+                    if (this.taskList.isEmpty()) {
+                        System.out.println("Upah! Feed me some tasks to track!");
+                    }
+                    else {
+                        System.out.println("Woop has detected several tasks");
+                        System.out.println(this.taskList);
+                    }
                     break;
                 default:
                     this.taskList.addTask(userInput);
-                    System.out.println("added " + userInput);
+                    System.out.println("Upah! I have added " + userInput + "!");
             }
 
             userInput = this.sc.nextLine();

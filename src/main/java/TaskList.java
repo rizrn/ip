@@ -13,6 +13,10 @@ public class TaskList {
         this.tasks[this.size++] = t;
     }
 
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
