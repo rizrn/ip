@@ -25,6 +25,10 @@ public class TaskList {
         return this.tasks[index].unmark();
     }
 
+    public String getTaskName(int index) {
+        return this.tasks[index].toString();
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();

@@ -30,10 +30,14 @@ public class WoopLogic {
                 case "mark":
                     listIndex = getListIndex(userInput);
                     this.taskList.markTask(listIndex);
+                    System.out.println("Upah! This task has been completed!");
+                    System.out.println(this.taskList.getTaskName(listIndex));
                     break;
                 case "unmark":
                     listIndex = getListIndex(userInput);
                     this.taskList.unmarkTask(listIndex);
+                    System.out.println("Upah? The task has was not completed after all :(");
+                    System.out.println(this.taskList.getTaskName(listIndex));
                     break;
                 default:
                     this.taskList.addTask(userInput);
