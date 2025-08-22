@@ -13,8 +13,15 @@ public class WoopLogic {
         String userInput = this.sc.nextLine();
 
         while (!checkExit(userInput)) {
-            this.taskList.addTask(userInput);
-            System.out.println("added " + userInput);
+            switch (userInput) {
+                case "list":
+                    System.out.println(this.taskList);
+                    break;
+                default:
+                    this.taskList.addTask(userInput);
+                    System.out.println("added " + userInput);
+            }
+
             userInput = this.sc.nextLine();
         }
     }
