@@ -17,7 +17,7 @@ public class TaskList {
     public String toString() {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < this.size; i++) {
-            String newLine = i + " " + this.tasks[i];
+            String newLine = (i + 1) + " " + this.tasks[i]; //increment i by 1 to start at 1
             sb.append(newLine);
             sb.append("\n");
         }
