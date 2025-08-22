@@ -9,6 +9,15 @@ public class Echo {
     public void echoMessage() {
         String userInput = this.sc.nextLine();
         System.out.println(userInput);
+        while (!checkExit(userInput)) {
+            userInput = this.sc.nextLine();
+            System.out.println(userInput);
+        }
+    }
+
+    private boolean checkExit(String text) {
+        String exit = "bye";
+        return text.equals(exit);
     }
 
 
