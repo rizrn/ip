@@ -8,8 +8,22 @@ public class TaskList {
         this.tasks = new Task[MAX_SIZE];
         this.size = 0;
     }
-    public void addTask(String name) {
-        Task t = new Task(name);
+    public void addTask(String name, String taskType) {
+        Task t;
+        switch (taskType){
+            case "deadline":
+                t = new DeadlineTask(name);
+                break;
+            case "todo":
+                t = new TodoTask(name);
+                break;
+            case "event":
+                t = new EventTask(name);
+                break;
+            default:
+                t = new TodoTask(name); //placeholder
+        }
+
         this.tasks[this.size++] = t;
     }
 
@@ -17,15 +31,23 @@ public class TaskList {
         return this.size == 0;
     }
 
-    public boolean markTask(int index) {
-        return this.tasks[index].mark();
+    public String markTask(int index) {
+        StringBuffer sb = new StringBuffer();
+        this.tasks[index].mark();
+        sb.append("Upah! This task has been completed!\n");
+        sb.append(this.getTaskName(index));
+        return sb.toString();
     }
 
-    public boolean unmarkTask(int index) {
-        return this.tasks[index].unmark();
+    public String unmarkTask(int index) {
+        StringBuffer sb = new StringBuffer();
+        this.tasks[index].unmark();
+        sb.append("Upah? The task has was not completed after all :(");
+        sb.append(this.getTaskName(index));
+        return sb.toString();
     }
 
-    public String getTaskName(int index) {
+    private String getTaskName(int index) {
         return this.tasks[index].toString();
     }
 
