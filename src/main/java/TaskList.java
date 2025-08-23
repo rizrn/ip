@@ -35,9 +35,9 @@ public class TaskList {
         }
 
         this.tasks[this.size++] = t;
-        return "Upah! You're busy! I added this task: \n" +
+        return "Upah! You're busy! I added this task:\n  " +
                 t.toString() +
-                "\nYou have " + this.size + " tasks now";
+                "\nYou have " + this.size + " task(s) now";
     }
 
     public boolean isEmpty() {
@@ -48,6 +48,7 @@ public class TaskList {
         StringBuffer sb = new StringBuffer();
         this.tasks[index].mark();
         sb.append("Upah! This task has been completed!\n");
+        sb.append("  ");
         sb.append(this.getTaskName(index));
         return sb.toString();
     }
@@ -56,6 +57,7 @@ public class TaskList {
         StringBuffer sb = new StringBuffer();
         this.tasks[index].unmark();
         sb.append("Upah? The task has was not completed after all :(\n");
+        sb.append("  ");
         sb.append(this.getTaskName(index));
         return sb.toString();
     }
