@@ -63,6 +63,7 @@ public class WoopLogic {
             }
         }
     }
+
     private int getListIndex(String text) throws IllegalDescriptorException{
         String tmp;
         if (!text.contains(" ")) {
@@ -71,6 +72,7 @@ public class WoopLogic {
         tmp = text.split(" ")[1];
         return Integer.parseInt(tmp) - 1; // go back to 0-indexing
     }
+
     private String getDescriptor(String text) throws IllegalDescriptorException {
         int tmp = text.indexOf(" ");
         if (tmp >= 0 && (tmp + 1) < text.length()) {
@@ -79,6 +81,7 @@ public class WoopLogic {
             throw new IllegalDescriptorException();
         }
     }
+
     private boolean checkExit(String userInput) {
         return userInput.equals(EXIT);
     }

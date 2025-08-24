@@ -1,11 +1,12 @@
 import java.lang.StringBuffer;
+import java.util.ArrayList;
 public class TaskList {
     private static final int MAX_SIZE = 100;
-    private Task[] tasks;
+    private ArrayList<Task> tasks;
     private int size;
 
     public TaskList() {
-        this.tasks = new Task[MAX_SIZE];
+        this.tasks = new ArrayList<>();
         this.size = 0;
     }
     public String addTask(String name, String taskType) {
@@ -34,9 +35,10 @@ public class TaskList {
                 t = new TodoTask(name); //placeholder
         }
 
-        this.tasks[this.size++] = t;
+        this.tasks.add(t);
+        this.size++;
         return "Upah! You're busy! I added this task:\n  " +
-                t.toString() +
+                t +
                 "\nYou have " + this.size + " task(s) now";
     }
 
@@ -46,7 +48,7 @@ public class TaskList {
 
     public String markTask(int index) {
         StringBuffer sb = new StringBuffer();
-        this.tasks[index].mark();
+        this.tasks.get(index).mark();
         sb.append("Upah! This task has been completed!\n");
         sb.append("  ");
         sb.append(this.getTaskName(index));
@@ -55,7 +57,7 @@ public class TaskList {
 
     public String unmarkTask(int index) {
         StringBuffer sb = new StringBuffer();
-        this.tasks[index].unmark();
+        this.tasks.get(index).unmark();
         sb.append("Upah? The task has was not completed after all :(\n");
         sb.append("  ");
         sb.append(this.getTaskName(index));
@@ -63,14 +65,14 @@ public class TaskList {
     }
 
     private String getTaskName(int index) {
-        return this.tasks[index].toString();
+        return this.tasks.get(index).toString();
     }
 
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < this.size; i++) {
-            String newLine = (i + 1) + " " + this.tasks[i]; //increment i by 1 to start at 1
+            String newLine = (i + 1) + " " + this.tasks.get(i); //increment i by 1 to start at 1
             sb.append(newLine);
             sb.append("\n");
         }
