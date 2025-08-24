@@ -48,4 +48,15 @@ Upah! I have detected several tasks
 2 [T][ ] help y
 3 [D][ ] return book  (by: Sunday)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
+Upah! I have deleted the task
+  [D][ ] return book  (by: Sunday)
+Upah! I have detected several tasks
+1 [T][ ] help x
+2 [T][ ] help y
+3 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
+Upah! I have deleted the task
+  [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
+Upah! I have detected several tasks
+1 [T][ ] help x
+2 [T][ ] help y
 Upah! Hope to see you again soon!

@@ -36,6 +36,10 @@ public class WoopLogic {
                         listIndex = getListIndex(userInput);
                         System.out.println(this.taskList.unmarkTask(listIndex));
                         break;
+                    case "delete":
+                        listIndex = getListIndex(userInput);
+                        System.out.println(this.taskList.deleteTask(listIndex));
+                        break;
                     case "todo":
                         descriptor = getDescriptor(userInput);
                         System.out.println(this.taskList.addTask(descriptor, "todo"));

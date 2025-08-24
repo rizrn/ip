@@ -64,6 +64,13 @@ public class TaskList {
         return sb.toString();
     }
 
+    public String deleteTask(int index) {
+        Task t = this.tasks.get(index);
+        this.tasks.remove(index);
+        this.size--;
+        return "Upah! I have deleted the task\n  " + t;
+    }
+
     private String getTaskName(int index) {
         return this.tasks.get(index).toString();
     }
