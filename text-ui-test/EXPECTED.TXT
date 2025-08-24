@@ -35,6 +35,7 @@ Upah! I have detected several tasks
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah! This task has been completed!
   [E][X] project meeting  (from: Mon 2pm  to: 4pm)
+Upah! What is hi?
 Upah? The task has was not completed after all :(
   [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah! I have detected several tasks

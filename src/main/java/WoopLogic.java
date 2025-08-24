@@ -18,38 +18,43 @@ public class WoopLogic {
         String descriptor = getDescriptor(userInput);
 
         while (!checkExit(userInput)) {
-            switch (command) {
-                case "list": //
-                    if (this.taskList.isEmpty()) {
-                        System.out.println("Upah! Feed me some tasks to track!");
-                    }
-                    else {
-                        System.out.println("Upah! I have detected several tasks");
-                        System.out.println(this.taskList);
-                    }
-                    break;
-                case "mark":
-                    listIndex = getListIndex(userInput);
-                    System.out.println(this.taskList.markTask(listIndex));
-                    break;
-                case "unmark":
-                    listIndex = getListIndex(userInput);
-                    System.out.println(this.taskList.unmarkTask(listIndex));
-                    break;
-                case "todo":
-                    System.out.println(this.taskList.addTask(descriptor, "todo"));
-                    break;
-                case "deadline":
-                    System.out.println(this.taskList.addTask(descriptor, "deadline"));
-                    break;
-                case "event":
-                    System.out.println(this.taskList.addTask(descriptor, "event"));
-                    break;
+            try {
+                switch (command) {
+                    case "list": //
+                        if (this.taskList.isEmpty()) {
+                            System.out.println("Upah! Feed me some tasks to track!");
+                        } else {
+                            System.out.println("Upah! I have detected several tasks");
+                            System.out.println(this.taskList);
+                        }
+                        break;
+                    case "mark":
+                        listIndex = getListIndex(userInput);
+                        System.out.println(this.taskList.markTask(listIndex));
+                        break;
+                    case "unmark":
+                        listIndex = getListIndex(userInput);
+                        System.out.println(this.taskList.unmarkTask(listIndex));
+                        break;
+                    case "todo":
+                        System.out.println(this.taskList.addTask(descriptor, "todo"));
+                        break;
+                    case "deadline":
+                        System.out.println(this.taskList.addTask(descriptor, "deadline"));
+                        break;
+                    case "event":
+                        System.out.println(this.taskList.addTask(descriptor, "event"));
+                        break;
+                    default:
+                        throw new IllegalCommandException();
+                }
+            } catch (IllegalCommandException e) {
+                System.out.println("Upah! What is " + command + "?");
+            } finally {
+                userInput = this.sc.nextLine();
+                command = userInput.split(" ")[0];
+                descriptor = getDescriptor(userInput);
             }
-
-            userInput = this.sc.nextLine();
-            command = userInput.split(" ")[0];
-            descriptor = getDescriptor(userInput);
         }
     }
     private int getListIndex(String text) {
