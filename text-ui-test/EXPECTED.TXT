@@ -33,6 +33,11 @@ Upah! I have detected several tasks
 2 [T][ ] help y
 3 [D][ ] return book  (by: Sunday)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
+Upah! The command mark needs a valid description!
+Upah! The command unmark needs a valid description!
+Upah! The command todo needs a valid description!
+Upah! The command deadline needs a valid description!
+Upah! The command event needs a valid description!
 Upah! This task has been completed!
   [E][X] project meeting  (from: Mon 2pm  to: 4pm)
 Upah! What is hi?

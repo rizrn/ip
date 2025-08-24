@@ -12,10 +12,10 @@ public class WoopLogic {
 
     public void run() {
         int listIndex; //for marking and unmarking tasks
+        String descriptor;
 
-        String userInput = this.sc.nextLine();
+        String userInput = this.sc.nextLine().stripLeading();
         String command = userInput.split(" ")[0];
-        String descriptor = getDescriptor(userInput);
 
         while (!checkExit(userInput)) {
             try {
@@ -37,37 +37,47 @@ public class WoopLogic {
                         System.out.println(this.taskList.unmarkTask(listIndex));
                         break;
                     case "todo":
+                        descriptor = getDescriptor(userInput);
                         System.out.println(this.taskList.addTask(descriptor, "todo"));
                         break;
                     case "deadline":
+                        descriptor = getDescriptor(userInput);
                         System.out.println(this.taskList.addTask(descriptor, "deadline"));
                         break;
                     case "event":
+                        descriptor = getDescriptor(userInput);
                         System.out.println(this.taskList.addTask(descriptor, "event"));
                         break;
                     default:
-                        throw new IllegalCommandException();
+                        throw new UnknownCommandException();
                 }
-            } catch (IllegalCommandException e) {
+            } catch (UnknownCommandException e) {
                 System.out.println("Upah! What is " + command + "?");
-            } finally {
-                userInput = this.sc.nextLine();
+            } catch (IllegalDescriptorException e) {
+                System.out.println("Upah! The command " + command + " needs a valid" +
+                        " description!");
+            }
+            finally {
+                userInput = this.sc.nextLine().stripLeading();
                 command = userInput.split(" ")[0];
-                descriptor = getDescriptor(userInput);
             }
         }
     }
-    private int getListIndex(String text) {
+    private int getListIndex(String text) throws IllegalDescriptorException{
         String tmp;
+        if (!text.contains(" ")) {
+            throw new IllegalDescriptorException();
+        }
         tmp = text.split(" ")[1];
         return Integer.parseInt(tmp) - 1; // go back to 0-indexing
     }
-    private String getDescriptor(String text) {
+    private String getDescriptor(String text) throws IllegalDescriptorException {
         int tmp = text.indexOf(" ");
         if (tmp >= 0 && (tmp + 1) < text.length()) {
             return text.substring(tmp + 1);
+        } else {
+            throw new IllegalDescriptorException();
         }
-        return "";
     }
     private boolean checkExit(String userInput) {
         return userInput.equals(EXIT);
