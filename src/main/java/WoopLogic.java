@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 public class WoopLogic {
     private final Scanner sc;
@@ -20,7 +19,7 @@ public class WoopLogic {
         while (!checkExit(userInput)) {
             try {
                 switch (command) {
-                    case "list": //
+                    case "list":
                         if (this.taskList.isEmpty()) {
                             System.out.println("Upah! Feed me some tasks to track!");
                         } else {

@@ -14,6 +14,7 @@ public class TaskList {
         String[] tmp;
 
         switch (taskType){
+            //TODO move all "Task" split methods to their classes
             case "deadline":
                 tmp = name.split("/by ");
                 String deadlineSubject = tmp[0];
