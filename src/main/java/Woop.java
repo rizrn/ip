@@ -3,8 +3,7 @@ public class Woop {
     public static void main(String[] args) {
         WoopLogic logic = new WoopLogic(Save.retrieveSave());
         String startMessage = "Upah! I'm "
-                + NAME + "\n" +
-                "What can I do for you?";
+                + NAME + "\nWhat can I do for you?";
         String endMessage = "Upah! Hope to see you again soon!";
         System.out.println(startMessage);
         logic.run();

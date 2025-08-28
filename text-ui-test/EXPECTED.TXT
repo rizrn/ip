@@ -7,7 +7,7 @@ Upah! You're busy! I added this task:
   [T][ ] help y
 You have 2 task(s) now
 Upah! You're busy! I added this task:
-  [D][ ] return book  (by: Sunday)
+  [D][ ] return book  (by: NOV 19 2024)
 You have 3 task(s) now
 Upah! You're busy! I added this task:
   [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
@@ -17,21 +17,21 @@ Upah! This task has been completed!
 Upah! I have detected several tasks
 1 [T][X] help x
 2 [T][ ] help y
-3 [D][ ] return book  (by: Sunday)
+3 [D][ ] return book  (by: NOV 19 2024)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah? The task has was not completed after all :(
   [T][ ] help y
 Upah! I have detected several tasks
 1 [T][X] help x
 2 [T][ ] help y
-3 [D][ ] return book  (by: Sunday)
+3 [D][ ] return book  (by: NOV 19 2024)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah? The task has was not completed after all :(
   [T][ ] help x
 Upah! I have detected several tasks
 1 [T][ ] help x
 2 [T][ ] help y
-3 [D][ ] return book  (by: Sunday)
+3 [D][ ] return book  (by: NOV 19 2024)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah! The command mark needs a valid description!
 Upah! The command unmark needs a valid description!
@@ -46,10 +46,10 @@ Upah? The task has was not completed after all :(
 Upah! I have detected several tasks
 1 [T][ ] help x
 2 [T][ ] help y
-3 [D][ ] return book  (by: Sunday)
+3 [D][ ] return book  (by: NOV 19 2024)
 4 [E][ ] project meeting  (from: Mon 2pm  to: 4pm)
 Upah! I have deleted the task
-  [D][ ] return book  (by: Sunday)
+  [D][ ] return book  (by: NOV 19 2024)
 Upah! I have detected several tasks
 1 [T][ ] help x
 2 [T][ ] help y

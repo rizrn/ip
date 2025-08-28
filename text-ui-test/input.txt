@@ -1,6 +1,6 @@
 todo help x
 todo help y
-deadline return book /by Sunday
+deadline return book /by 2024-11-19
 event project meeting /from Mon 2pm /to 4pm
 mark 1
 list
