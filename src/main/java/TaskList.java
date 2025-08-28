@@ -9,9 +9,7 @@ public class TaskList {
 
     public String addTask(Task t) {
         this.tasks.add(t);
-        return "Upah! You're busy! I added this task:\n  "
-                + t + "\nYou have "
-                + getSize() + " task(s) now";
+        return t.toString();
     }
 
     public boolean isEmpty() {
@@ -19,27 +17,19 @@ public class TaskList {
     }
 
     public String markTask(int index) {
-        StringBuffer sb = new StringBuffer();
         this.tasks.get(index).mark();
-        sb.append("Upah! This task has been completed!\n");
-        sb.append("  ");
-        sb.append(this.getTaskName(index));
-        return sb.toString();
+        return this.getTaskName(index);
     }
 
     public String unmarkTask(int index) {
-        StringBuffer sb = new StringBuffer();
         this.tasks.get(index).unmark();
-        sb.append("Upah? The task has was not completed after all :(\n");
-        sb.append("  ");
-        sb.append(this.getTaskName(index));
-        return sb.toString();
+        return this.getTaskName(index);
     }
 
     public String deleteTask(int index) {
         Task t = this.tasks.get(index);
         this.tasks.remove(index);
-        return "Upah! I have deleted the task\n  " + t;
+        return t.toString();
     }
 
     public String getTasksSaveFormat() {
@@ -54,7 +44,7 @@ public class TaskList {
         return sb.toString();
     }
 
-    private int getSize() {
+    public int getSize() {
         return this.tasks.size();
     }
 

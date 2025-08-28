@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import java.util.Scanner;
 
-public class Save {
+public class Storage {
     private static final String PATH = "ip/data/data.txt";
     public static void saveTasks(TaskList list) {
         try {

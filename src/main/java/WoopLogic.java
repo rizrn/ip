@@ -17,29 +17,24 @@ public class WoopLogic {
             try {
                 switch (command) {
                 case "list":
-                    if (this.taskList.isEmpty()) {
-                        System.out.println("Upah! Feed me some tasks to track!");
-                    } else {
-                        System.out.println("Upah! I have detected several tasks");
-                        System.out.println(this.taskList);
-                    }
+                    Ui.showTaskList(this.taskList);
                     break;
                 case "mark":
                     int listIndex = getListIndex(userInput);
-                    System.out.println(this.taskList.markTask(listIndex));
+                    Ui.showMarked(this.taskList.markTask(listIndex));
                     break;
                 case "unmark":
                     listIndex = getListIndex(userInput);
-                    System.out.println(this.taskList.unmarkTask(listIndex));
+                    Ui.showUnmarked(this.taskList.unmarkTask(listIndex));
                     break;
                 case "delete":
                     listIndex = getListIndex(userInput);
-                    System.out.println(this.taskList.deleteTask(listIndex));
+                    Ui.showDeleted(this.taskList.deleteTask(listIndex));
                     break;
                 case "todo":
                     String descriptor = getDescriptor(userInput);
                     Task t = new TodoTask(descriptor);
-                    System.out.println(this.taskList.addTask(t));
+                    Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 case "deadline":
                     descriptor = getDescriptor(userInput);
@@ -47,7 +42,7 @@ public class WoopLogic {
                     String deadlineSubject = tmp[0];
                     String dueDate = tmp[1];
                     t = new DeadlineTask(deadlineSubject, dueDate);
-                    System.out.println(this.taskList.addTask(t));
+                    Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 case "event":
                     descriptor = getDescriptor(userInput);
@@ -57,21 +52,20 @@ public class WoopLogic {
                     String startTime = tmp2[0];
                     String endTime = tmp2[1];
                     t = new EventTask(eventSubject, startTime, endTime);
-                    System.out.println(this.taskList.addTask(t));
+                    Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 default:
                     throw new UnknownCommandException();
                 }
             } catch (UnknownCommandException e) {
-                System.out.println("Upah! What is " + command + "?");
+                Ui.showCommandError(command);
             } catch (IllegalDescriptorException e) {
-                System.out.println("Upah! The command " + command + " needs a valid"
-                        + " description!");
+                Ui.showDescriptorError(command);
             }
             finally {
                 userInput = this.sc.nextLine().stripLeading();
                 command = userInput.split(" ")[0];
-                Save.saveTasks(this.taskList);
+                Storage.saveTasks(this.taskList);
             }
         }
     }
