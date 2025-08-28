@@ -41,15 +41,27 @@ public class WoopLogic {
                         break;
                     case "todo":
                         descriptor = getDescriptor(userInput);
-                        System.out.println(this.taskList.addTask(descriptor, "todo"));
+                        Task t = new TodoTask(descriptor);
+                        System.out.println(this.taskList.addTask(t));
                         break;
                     case "deadline":
+                        String[] tmp;
                         descriptor = getDescriptor(userInput);
-                        System.out.println(this.taskList.addTask(descriptor, "deadline"));
+                        tmp = descriptor.split("/by ");
+                        String deadlineSubject = tmp[0];
+                        String dueDate = tmp[1];
+                        t = new DeadlineTask(deadlineSubject, dueDate);
+                        System.out.println(this.taskList.addTask(t));
                         break;
                     case "event":
                         descriptor = getDescriptor(userInput);
-                        System.out.println(this.taskList.addTask(descriptor, "event"));
+                        tmp = descriptor.split("/from ");
+                        String eventSubject = tmp[0];
+                        String[] tmp2 = tmp[1].split("/to ");
+                        String startTime = tmp2[0];
+                        String endTime = tmp2[1];
+                        t = new EventTask(eventSubject, startTime, endTime);
+                        System.out.println(this.taskList.addTask(t));
                         break;
                     default:
                         throw new UnknownCommandException();
