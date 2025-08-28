@@ -11,7 +11,7 @@ public class WoopLogic {
 
     public void run() {
         String userInput = this.sc.nextLine().stripLeading();
-        String command = userInput.split(" ")[0];
+        String command = Parser.parseCommand(userInput);
 
         while (!checkExit(userInput)) {
             try {
@@ -20,38 +20,27 @@ public class WoopLogic {
                     Ui.showTaskList(this.taskList);
                     break;
                 case "mark":
-                    int listIndex = getListIndex(userInput);
+                    int listIndex = Parser.parseIndex(userInput);
                     Ui.showMarked(this.taskList.markTask(listIndex));
                     break;
                 case "unmark":
-                    listIndex = getListIndex(userInput);
+                    listIndex = Parser.parseIndex(userInput);
                     Ui.showUnmarked(this.taskList.unmarkTask(listIndex));
                     break;
                 case "delete":
-                    listIndex = getListIndex(userInput);
+                    listIndex = Parser.parseIndex(userInput);
                     Ui.showDeleted(this.taskList.deleteTask(listIndex));
                     break;
                 case "todo":
-                    String descriptor = getDescriptor(userInput);
-                    Task t = new TodoTask(descriptor);
+                    Task t = Parser.parseDescriptor(userInput, TaskType.TODO);
                     Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 case "deadline":
-                    descriptor = getDescriptor(userInput);
-                    String[] tmp = descriptor.split("/by ");
-                    String deadlineSubject = tmp[0];
-                    String dueDate = tmp[1];
-                    t = new DeadlineTask(deadlineSubject, dueDate);
+                    t = Parser.parseDescriptor(userInput, TaskType.DEADLINE);
                     Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 case "event":
-                    descriptor = getDescriptor(userInput);
-                    tmp = descriptor.split("/from ");
-                    String eventSubject = tmp[0];
-                    String[] tmp2 = tmp[1].split("/to ");
-                    String startTime = tmp2[0];
-                    String endTime = tmp2[1];
-                    t = new EventTask(eventSubject, startTime, endTime);
+                    t = Parser.parseDescriptor(userInput, TaskType.EVENT);
                     Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
                     break;
                 default:
@@ -64,26 +53,9 @@ public class WoopLogic {
             }
             finally {
                 userInput = this.sc.nextLine().stripLeading();
-                command = userInput.split(" ")[0];
+                command = Parser.parseCommand(userInput);
                 Storage.saveTasks(this.taskList);
             }
-        }
-    }
-
-    private int getListIndex(String text) throws IllegalDescriptorException{
-        if (!text.contains(" ")) {
-            throw new IllegalDescriptorException();
-        }
-        String tmp = text.split(" ")[1];
-        return Integer.parseInt(tmp) - 1; // go back to 0-indexing
-    }
-
-    private String getDescriptor(String text) throws IllegalDescriptorException {
-        int tmp = text.indexOf(" ");
-        if (tmp >= 0 && (tmp + 1) < text.length()) {
-            return text.substring(tmp + 1);
-        } else {
-            throw new IllegalDescriptorException();
         }
     }
 
