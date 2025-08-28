@@ -22,7 +22,7 @@ public class DeadlineTask extends Task{
     @Override
     public String getSaveInfo() {
         return "D" + super.getSaveInfo()
-                + " | " + getDateString();
+                + " | " + this.dueDate.toString();
     }
 
     @Override

@@ -9,9 +9,9 @@ public class TaskList {
 
     public String addTask(Task t) {
         this.tasks.add(t);
-        return "Upah! You're busy! I added this task:\n  " +
-                t +
-                "\nYou have " + getSize() + " task(s) now";
+        return "Upah! You're busy! I added this task:\n  "
+                + t + "\nYou have "
+                + getSize() + " task(s) now";
     }
 
     public boolean isEmpty() {
@@ -64,6 +64,7 @@ public class TaskList {
 
     @Override
     public String toString() {
+        if (isEmpty()) return "";
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < getSize(); i++) {
             String newLine = (i + 1) + " " + this.tasks.get(i); //increment i by 1 to start at 1
