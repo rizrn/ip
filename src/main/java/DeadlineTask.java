@@ -6,6 +6,17 @@ public class DeadlineTask extends Task{
         this.dueDate = dueDate;
     }
 
+    public DeadlineTask(String name, boolean isFinished, String dueDate) {
+        super(name, isFinished);
+        this.dueDate = dueDate;
+    }
+
+    @Override
+    public String getSaveInfo() {
+        return "D" + super.getSaveInfo()
+                + " | " + this.dueDate;
+    }
+
     @Override
     public String toString() {
         return "[D]" + super.toString() +

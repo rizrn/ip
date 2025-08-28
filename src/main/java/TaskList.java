@@ -1,24 +1,21 @@
 import java.lang.StringBuffer;
 import java.util.ArrayList;
 public class TaskList {
-    private static final int MAX_SIZE = 100;
     private ArrayList<Task> tasks;
-    private int size;
 
     public TaskList() {
         this.tasks = new ArrayList<>();
-        this.size = 0;
     }
+
     public String addTask(Task t) {
         this.tasks.add(t);
-        this.size++;
         return "Upah! You're busy! I added this task:\n  " +
                 t +
-                "\nYou have " + this.size + " task(s) now";
+                "\nYou have " + getSize() + " task(s) now";
     }
 
     public boolean isEmpty() {
-        return this.size == 0;
+        return getSize() == 0;
     }
 
     public String markTask(int index) {
@@ -42,8 +39,23 @@ public class TaskList {
     public String deleteTask(int index) {
         Task t = this.tasks.get(index);
         this.tasks.remove(index);
-        this.size--;
         return "Upah! I have deleted the task\n  " + t;
+    }
+
+    public String getTasksSaveFormat() {
+        StringBuffer sb = new StringBuffer();
+        if (isEmpty()) return "";
+        for (int i = 0; i < getSize(); i++) {
+            sb.append(this.tasks.get(i).getSaveInfo());
+            sb.append("\n");
+        }
+
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+
+    private int getSize() {
+        return this.tasks.size();
     }
 
     private String getTaskName(int index) {
@@ -53,7 +65,7 @@ public class TaskList {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < this.size; i++) {
+        for (int i = 0; i < getSize(); i++) {
             String newLine = (i + 1) + " " + this.tasks.get(i); //increment i by 1 to start at 1
             sb.append(newLine);
             sb.append("\n");
