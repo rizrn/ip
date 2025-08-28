@@ -7,6 +7,15 @@ public abstract class Task {
         this.isFinished = false;
     }
 
+    public Task(String name, boolean isFinished) {
+        this.name = name;
+        this.isFinished = isFinished;
+    }
+
+    public boolean isFinished() {
+        return this.isFinished;
+    }
+
     public boolean mark() {
         if (this.isFinished) {
             return false;
@@ -24,6 +33,11 @@ public abstract class Task {
             return false;
         }
     }
+
+    public String getSaveInfo() {
+        return " | " + (this.isFinished ? "1" : "0")
+                + " | " + this.name;
+    };
 
     @Override
     public String toString() {
