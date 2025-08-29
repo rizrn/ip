@@ -1,13 +1,19 @@
 package WoopAI;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class DeadlineTask extends Task{
     private LocalDate dueDate;
 
-    public DeadlineTask(String name, String dueDate) {
+    public DeadlineTask(String name, String dueDate)
+            throws IllegalDescriptorException {
         super(name);
-        this.dueDate = LocalDate.parse(dueDate);
+        try {
+            this.dueDate = LocalDate.parse(dueDate);
+        } catch (DateTimeParseException e) {
+            throw new IllegalDescriptorException();
+        }
     }
 
     public DeadlineTask(String name, boolean isFinished, String dueDate) {
