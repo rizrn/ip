@@ -1,33 +1,36 @@
 package WoopAI;
 
-import java.io.FileNotFoundException;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import java.util.List;
 
 public class Storage {
-    private static final String PATH = "ip/data/data.txt";
+    private static final Path PATH = Paths.get("data/data.txt");
+    private static final Path DIR = Paths.get("data/");
+
     public static void saveTasks(TaskList list) {
         try {
-            FileWriter fw = new FileWriter(PATH);
-            fw.write(list.getTasksSaveFormat());
-            fw.close();
-        } catch (FileNotFoundException e) {
-            File f = new File(PATH);
+            Files.createDirectory(DIR);
+            Files.writeString(PATH, list.getTasksSaveFormat());
         } catch (IOException e) {
-            System.out.println("Upah! I cannot access your saved tasks");
+            Ui.showIoError();
         }
     }
 
     public static TaskList retrieveSave() {
+        if (!Files.exists(PATH) || !Files.isRegularFile(PATH)) {
+            return new TaskList();
+        }
+
         TaskList list = new TaskList();
         try {
-            File f = new File(PATH);
-            Scanner sc = new Scanner(f);
-            while (sc.hasNext()) {
-                String[] tmp = sc.nextLine().split(" \\| ");
+            List<String> l = Files.readAllLines(PATH);
+            for (int i = 0; i < l.size(); i++) {
+                String[] tmp = l.get(i).split(" \\| ");
                 String name = tmp[2];
                 boolean isFinished = tmp[1].equals("1");
                 switch (tmp[0]) {
@@ -48,8 +51,8 @@ public class Storage {
                 }
 
             }
-        } catch (FileNotFoundException e) {
-           return list;
+        } catch (IOException e) {
+           Ui.showIoError();
         }
 
         return list;

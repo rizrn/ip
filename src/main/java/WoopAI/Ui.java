@@ -49,4 +49,12 @@ public class Ui {
         System.out.println("Upah! The command " + command
                 + " needs a valid description!");
     }
+
+    public static void showError(Exception e) {
+        System.out.println(e.getMessage());
+    }
+
+    public static void showIoError() {
+        System.out.println("Upah! I cannot access your saved tasks");
+    }
 }
