@@ -1,3 +1,5 @@
+package WoopAI;
+
 public class Ui {
     private static final String INDENT = "  ";
 

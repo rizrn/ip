@@ -1,3 +1,5 @@
+package WoopAI;
+
 public enum TaskType {
     TODO,
     DEADLINE,

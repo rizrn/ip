@@ -1,3 +1,5 @@
+package WoopAI;
+
 import java.util.Scanner;
 public class WoopLogic {
     private final Scanner sc;

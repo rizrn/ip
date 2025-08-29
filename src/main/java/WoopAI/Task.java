@@ -1,3 +1,5 @@
+package WoopAI;
+
 public abstract class Task {
     private String name;
     private boolean isFinished;

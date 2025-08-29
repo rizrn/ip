@@ -1,3 +1,5 @@
+package WoopAI;
+
 public class Woop {
     public static final Ui ui = new Ui();
 
