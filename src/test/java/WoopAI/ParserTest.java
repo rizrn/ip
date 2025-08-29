@@ -9,7 +9,15 @@ class ParserTest {
     @Test
     public void parseDescriptor_todoTask_taskReturned()
             throws IllegalDescriptorException, UnknownCommandException {
-        Task t = Parser.parseDescriptor("hello fs", TaskType.TODO);
-        assertEquals(" ", " ");
+        Task t = Parser.parseDescriptor("todo hello fs", TaskType.TODO);
+        assertEquals(new TodoTask("hello fs"), t);
+    }
+
+    @Test
+    public void parseDescriptor_eventTask_taskReturned()
+        throws IllegalDescriptorException, UnknownCommandException {
+        Task t = Parser.parseDescriptor("event hello /from 2 pm /to 4 pm", TaskType.EVENT);
+        assertEquals(new EventTask("hello", "2 pm", "4 pm"),
+                t);
     }
 }

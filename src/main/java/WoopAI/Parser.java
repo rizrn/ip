@@ -14,14 +14,14 @@ public class Parser {
             case TODO:
                 return new TodoTask(descriptor);
             case EVENT:
-                String[] tmp = descriptor.split("/from ");
+                String[] tmp = descriptor.split(" /from ");
                 String eventSubject = tmp[0];
-                String[] tmp2 = tmp[1].split("/to ");
+                String[] tmp2 = tmp[1].split(" /to ");
                 String startTime = tmp2[0];
                 String endTime = tmp2[1];
                 return new EventTask(eventSubject, startTime, endTime);
             case DEADLINE:
-                tmp = descriptor.split("/by ");
+                tmp = descriptor.split(" /by ");
                 String deadlineSubject = tmp[0];
                 String dueDate = tmp[1];
                 return new DeadlineTask(deadlineSubject, dueDate);

@@ -18,4 +18,17 @@ public class TodoTask extends Task{
     public String toString() {
         return "[T]" + super.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (o instanceof TodoTask t) {
+            return super.equals(t);
+        }
+
+        return false;
+    }
 }

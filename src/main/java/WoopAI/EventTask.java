@@ -29,4 +29,19 @@ public class EventTask extends Task{
                 + " (from: " + this.startTime
                 + " to: " + this.endTime + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (o instanceof EventTask t) {
+            return t.startTime.equals(this.startTime)
+                    && t.endTime.equals(this.endTime)
+                    && super.equals(t);
+        }
+
+        return false;
+    }
 }

@@ -12,9 +12,18 @@ public class Storage {
     private static final Path PATH = Paths.get("data/data.txt");
     private static final Path DIR = Paths.get("data/");
 
+    public static void checkDirectory() {
+        try {
+            if (!Files.exists(DIR)) {
+                Files.createDirectory(DIR);
+            }
+        } catch (IOException e) {
+            Ui.showIoError();
+        }
+    }
+
     public static void saveTasks(TaskList list) {
         try {
-            Files.createDirectory(DIR);
             Files.writeString(PATH, list.getTasksSaveFormat());
         } catch (IOException e) {
             Ui.showIoError();

@@ -14,7 +14,7 @@ public abstract class Task {
         this.isFinished = isFinished;
     }
 
-    public boolean isFinished() {
+    public boolean getIsFinished() {
         return this.isFinished;
     }
 
@@ -51,5 +51,17 @@ public abstract class Task {
         } else {
             return unfinished + " " + this.name;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o instanceof Task t) {
+            return t.name.equals(this.name)
+                    && this.isFinished == t.isFinished;
+        }
+        return false;
     }
 }

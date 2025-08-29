@@ -3,6 +3,7 @@ package WoopAI;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DeadlineTaskTest {
@@ -16,5 +17,29 @@ class DeadlineTaskTest {
     public void initialise_incompleteDate_descriptorExceptionThrown() {
         assertThrows(IllegalDescriptorException.class,
                 () -> new DeadlineTask("Give Book", "2022-12"));
+    }
+
+    @Test
+    public void equals_sameDate_true() throws IllegalDescriptorException {
+        assertEquals(new DeadlineTask("Give Book", "2022-12-10"),
+                new DeadlineTask("Give Book", "2022-12-10"));
+    }
+
+    @Test
+    public void equals_differentDate_false() throws IllegalDescriptorException {
+        assertNotEquals(new DeadlineTask("Give Book", "2022-11-10"),
+                new DeadlineTask("Give Book", "2022-12-10"));
+    }
+
+    @Test
+    public void equals_differentName_false() throws IllegalDescriptorException {
+        assertNotEquals(new DeadlineTask("Give Bok", "2022-12-10"),
+                new DeadlineTask("Give Book", "2022-12-10"));
+    }
+
+    @Test
+    public void equals_differentIsFinished_false() throws  IllegalDescriptorException {
+        assertNotEquals(new DeadlineTask("Give Book", "2022-12-10"),
+                new DeadlineTask("Give Book", true ,"2022-12-10"));
     }
 }
