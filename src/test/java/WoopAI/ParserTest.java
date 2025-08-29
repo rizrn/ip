@@ -20,4 +20,11 @@ class ParserTest {
         assertEquals(new EventTask("hello", "2 pm", "4 pm"),
                 t);
     }
+
+    @Test
+    public void parseDescriptor_deadlineTask_taskReturned()
+            throws IllegalDescriptorException, UnknownCommandException {
+        Task t = Parser.parseDescriptor("deadline help /by 2024-11-12", TaskType.DEADLINE);
+        assertEquals(new DeadlineTask("help", "2024-11-12"), t);
+    }
 }
