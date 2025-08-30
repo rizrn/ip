@@ -49,7 +49,7 @@ public class DeadlineTask extends Task{
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     @Override
     public String getSaveInfo() {

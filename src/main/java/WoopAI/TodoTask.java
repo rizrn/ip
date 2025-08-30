@@ -26,7 +26,7 @@ public class TodoTask extends Task{
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     @Override
     public String getSaveInfo() {

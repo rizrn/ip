@@ -37,7 +37,7 @@ public class EventTask extends Task{
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     @Override
     public String getSaveInfo() {
