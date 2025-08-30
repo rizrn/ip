@@ -1,16 +1,29 @@
 package WoopAI;
 
 import java.util.Scanner;
+
+/**
+ * Handles main logic of Woop
+ */
 public class WoopLogic {
     private final Scanner sc;
-    private static final String EXIT = "bye";
+    private static final String EXIT = "bye"; //String constant to exit loop
     private TaskList taskList;
 
+    /**
+     * Initialises a WoopLogic object.
+     *
+     * @param tasklist stores the task list for the Woop to use.
+     */
     public WoopLogic(TaskList tasklist) {
         this.sc = new Scanner(System.in);
         this.taskList = tasklist;
     }
 
+    /**
+     * Runs WoopLogic.
+     * Exits when the constant EXIT is inputted by the user.
+     */
     public void run() {
         String userInput = this.sc.nextLine().stripLeading();
         String command = Parser.parseCommand(userInput);
@@ -64,5 +77,4 @@ public class WoopLogic {
     private boolean checkExit(String userInput) {
         return userInput.equals(EXIT);
     }
-
 }

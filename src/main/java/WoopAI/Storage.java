@@ -8,10 +8,17 @@ import java.nio.file.Paths;
 
 import java.util.List;
 
+/**
+ * Class that handles save states
+ */
 public class Storage {
     private static final Path PATH = Paths.get("data/data.txt");
     private static final Path DIR = Paths.get("data/");
 
+    /**
+     * Checks if data directory exists.
+     * If not exists, create directory.
+     */
     public static void checkDirectory() {
         try {
             if (!Files.exists(DIR)) {
@@ -22,6 +29,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves tasks from the given TaskList object to data file
+     * If I/O error occurs, prints an error message.
+     *
+     * @param list Current TaskList to store.
+     */
     public static void saveTasks(TaskList list) {
         try {
             Files.writeString(PATH, list.getTasksSaveFormat());
@@ -30,6 +43,13 @@ public class Storage {
         }
     }
 
+    /**
+     * Retrieves save state from data file.
+     * Then, interpret the save state and convert into a TaskList.
+     * If it does not exist, return empty TaskList.
+     *
+     * @return TaskList of tasks in the save state.
+     */
     public static TaskList retrieveSave() {
         if (!Files.exists(PATH) || !Files.isRegularFile(PATH)) {
             return new TaskList();
