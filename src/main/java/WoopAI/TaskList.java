@@ -42,7 +42,7 @@ public class TaskList {
      * @param index The index of the Task to be marked.
      * @return The marked Task converted to string for output.
      */
-    public String markTask(int index) {
+    public String markTask(int index) throws MarkedTaskException {
         this.tasks.get(index).mark();
         return this.getTaskName(index);
     }
@@ -53,7 +53,7 @@ public class TaskList {
      * @param index The index of the Task to be unmarked.
      * @return The unmarked Task converted to string for output.
      */
-    public String unmarkTask(int index) {
+    public String unmarkTask(int index) throws UnmarkedTaskException {
         this.tasks.get(index).unmark();
         return this.getTaskName(index);
     }

@@ -38,26 +38,22 @@ public abstract class Task {
      *
      * @return Whether task was completed successfully or not.
      */
-    public boolean mark() {
-        if (this.isFinished) {
-            return false;
-        } else {
+    public void mark() throws MarkedTaskException {
+        if (!this.isFinished) {
             this.isFinished = true;
-            return true;
+        } else {
+            throw new MarkedTaskException(this);
         }
     }
 
     /**
      * Marks task as finished.
-     *
-     * @return Whether task was completed successfully or not.
      */
-    public boolean unmark() {
+    public void unmark() throws UnmarkedTaskException {
         if (this.isFinished) {
             this.isFinished = false;
-            return true;
         } else {
-            return false;
+            throw new UnmarkedTaskException(this);
         }
     }
 

@@ -69,8 +69,9 @@ public class WoopLogic {
                 Ui.showCommandError(command);
             } catch (IllegalDescriptorException e) {
                 Ui.showDescriptorError(command);
-            }
-            finally {
+            } catch (Exception e) {
+                Ui.showError(e);
+            } finally {
                 userInput = this.sc.nextLine().stripLeading();
                 command = Parser.parseCommand(userInput);
                 Storage.saveTasks(this.taskList);

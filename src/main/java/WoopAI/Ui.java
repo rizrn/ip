@@ -4,7 +4,7 @@ package WoopAI;
  * Class to output text by Woop.
  */
 public class Ui {
-    private static final String INDENT = "  ";
+    public static final String INDENT = "  ";
 
     public static void showIntro() {
         System.out.println("Upah! I'm Woop\nWhat can I do for you?");
