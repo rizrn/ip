@@ -53,6 +53,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Retrieves the keyword from the user input.
+     * The keyword is used to search for tasks that contain the keyword.
+     *
+     * @param input The user input.
+     * @return The keyword to search for tasks.
+     */
     public static String parseKeyword(String input) {
         String[] tmp = input.split(" ", 2);
         return tmp[1];
