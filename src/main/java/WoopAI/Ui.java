@@ -24,6 +24,15 @@ public class Ui {
 
     }
 
+    public static void showFindKeyword(TaskList list) {
+        if (list.isEmpty()) {
+            System.out.println("Upah! There are no matching tasks in your list");
+        } else {
+            System.out.println("Upah! Here are the matching tasks in your list");
+            System.out.println(list);
+        }
+    }
+
     public static void showMarked(String task) {
         System.out.println("Upah! This task has been completed!\n"
                 + INDENT + task);

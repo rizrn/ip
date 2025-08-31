@@ -53,6 +53,11 @@ public class Parser {
         }
     }
 
+    public static String parseKeyword(String input) {
+        String[] tmp = input.split(" ", 2);
+        return tmp[1];
+    }
+
     /**
      * Retrieves the index of the task from the user input.
      * The index of the task is used for commands that require to edit at specific indexes.

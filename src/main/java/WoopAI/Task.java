@@ -71,6 +71,10 @@ public abstract class Task {
                 + " | " + this.name;
     };
 
+    public boolean containsText(String text) {
+        return this.name.contains(text);
+    }
+
     @Override
     public String toString() {
         String finished = "[X]";
