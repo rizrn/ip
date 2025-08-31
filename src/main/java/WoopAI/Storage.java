@@ -55,7 +55,7 @@ public class Storage {
             return new TaskList();
         }
 
-        TaskList list = new TaskList();
+        TaskList tasks = new TaskList();
         try {
             List<String> l = Files.readAllLines(PATH);
             for (int i = 0; i < l.size(); i++) {
@@ -65,17 +65,17 @@ public class Storage {
                 switch (tmp[0]) {
                 case "D":
                     String dueDate = tmp[3];
-                    list.addTask(new DeadlineTask(
+                    tasks.addTask(new DeadlineTask(
                             name, isFinished, dueDate));
                     break;
                 case "E":
                     String startTime = tmp[3];
                     String endTime = tmp[4];
-                    list.addTask(new EventTask(name,
+                    tasks.addTask(new EventTask(name,
                             isFinished, startTime, endTime));
                     break;
                 case "T":
-                    list.addTask(new TodoTask(name, isFinished));
+                    tasks.addTask(new TodoTask(name, isFinished));
                     break;
                 }
 
@@ -84,6 +84,6 @@ public class Storage {
            Ui.showIoError();
         }
 
-        return list;
+        return tasks;
     }
 }
