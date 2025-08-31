@@ -17,7 +17,7 @@ public class WoopLogic {
 
         while (!checkExit(userInput)) {
             try {
-                switch (command) {
+                switch (command) { //handles all valid commands
                 case "list":
                     Ui.showTaskList(this.taskList);
                     break;
@@ -44,6 +44,10 @@ public class WoopLogic {
                 case "event":
                     t = Parser.parseDescriptor(userInput, TaskType.EVENT);
                     Ui.showAddTask(this.taskList.addTask(t), this.taskList.getSize());
+                    break;
+                case "find":
+                    String keyword = Parser.parseKeyword(userInput);
+                    Ui.showFindKeyword(this.taskList.findKeyword(keyword));
                     break;
                 default:
                     throw new UnknownCommandException();

@@ -46,6 +46,16 @@ public class TaskList {
         return sb.toString();
     }
 
+    public TaskList findKeyword(String keyword) {
+        TaskList resList = new TaskList();
+        for (Task task : this.tasks) {
+            if (task.containsText(keyword)) {
+                resList.addTask(task);
+            }
+        }
+        return  resList;
+    }
+
     public int getSize() {
         return this.tasks.size();
     }

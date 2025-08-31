@@ -33,6 +33,11 @@ public class Parser {
         }
     }
 
+    public static String parseKeyword(String input) {
+        String[] tmp = input.split(" ", 2);
+        return tmp[1];
+    }
+
     public static int parseIndex(String input) throws IllegalDescriptorException {
         if (!input.contains(" ")) {
             throw new IllegalDescriptorException();
