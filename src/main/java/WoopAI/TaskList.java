@@ -2,38 +2,79 @@ package WoopAI;
 
 import java.lang.StringBuffer;
 import java.util.ArrayList;
+
+/**
+ * Class to keep track of all Task objects in current Woop run.
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
 
+    /**
+     * Initialises a TaskList object with an empty list.
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
+    /**
+     * Adds a task to the list.
+     *
+     * @param t Task to be added.
+     * @return Added task converted to string format for output.
+     */
     public String addTask(Task t) {
         this.tasks.add(t);
         return t.toString();
     }
 
+    /**
+     * Checks if list is empty.
+     *
+     * @return true if list is empty.
+     */
     public boolean isEmpty() {
         return getSize() == 0;
     }
 
+    /**
+     * Marks the Task at the given index.
+     *
+     * @param index The index of the Task to be marked.
+     * @return The marked Task converted to string for output.
+     */
     public String markTask(int index) {
         this.tasks.get(index).mark();
         return this.getTaskName(index);
     }
 
+    /**
+     * Unmarks the Task at the given index.
+     *
+     * @param index The index of the Task to be unmarked.
+     * @return The unmarked Task converted to string for output.
+     */
     public String unmarkTask(int index) {
         this.tasks.get(index).unmark();
         return this.getTaskName(index);
     }
 
+    /**
+     * Deletes the Task at the given index.
+     *
+     * @param index The index of the Task to be deleted.
+     * @return The deleted Task converted to string for output.
+     */
     public String deleteTask(int index) {
         Task t = this.tasks.get(index);
         this.tasks.remove(index);
         return t.toString();
     }
 
+    /**
+     * Converts all Tasks in the list to the save format for save state.
+     *
+     * @return All Tasks in save format.
+     */
     public String getTasksSaveFormat() {
         StringBuffer sb = new StringBuffer();
         if (isEmpty()) return "";

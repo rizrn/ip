@@ -1,10 +1,30 @@
 package WoopAI;
 
+/**
+ * Class to handle all user input and return needed information.
+ */
 public class Parser {
+    /**
+     * Retrieves the command from the given input.
+     *
+     * @param input The user input.
+     * @return The command part of the input.
+     */
     public static String parseCommand(String input) {
         return input.split(" ")[0];
     }
 
+    /**
+     * Retrieves the Task descriptor from the user input depending on the task type.
+     * Additionally, creates a Task object that represents the descriptor.
+     * If descriptor is invalid, throws IllegalDescriptorException.
+     *
+     * @param input The user input.
+     * @param type The Task type that this descriptor is for.
+     * @return A new Task object that represents the descriptor.
+     * @throws IllegalDescriptorException If descriptor syntax is invalid.
+     * @throws UnknownCommandException If type given is invalid.
+     */
     public static Task parseDescriptor(String input, TaskType type)
             throws IllegalDescriptorException, UnknownCommandException {
         int index = input.indexOf(" ");
@@ -33,6 +53,14 @@ public class Parser {
         }
     }
 
+    /**
+     * Retrieves the index of the task from the user input.
+     * The index of the task is used for commands that require to edit at specific indexes.
+     *
+     * @param input The user input.
+     * @return The index of the Task in int.
+     * @throws IllegalDescriptorException If descriptor syntax is not valid.
+     */
     public static int parseIndex(String input) throws IllegalDescriptorException {
         if (!input.contains(" ")) {
             throw new IllegalDescriptorException();

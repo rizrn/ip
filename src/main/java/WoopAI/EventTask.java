@@ -1,15 +1,34 @@
 package WoopAI;
 
+/**
+ * A class for event type task.
+ */
 public class EventTask extends Task{
     private String startTime;
     private String endTime;
 
+    /**
+     * Initialises a EventTask using name, startTime and endTime.
+     * isFinished is set to false by default.
+     *
+     * @param name The name of task.
+     * @param startTime The start time of task.
+     * @param endTime The end time of task.
+     */
     public EventTask(String name, String startTime, String endTime) {
         super(name);
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
+    /**
+     * Initialises a EventTask using name, isFinished, startTime and endTime.
+     *
+     * @param name The name of task.
+     * @param isFinished Whether task is finished.
+     * @param startTime The start time of task.
+     * @param endTime The end time of task.
+     */
     public EventTask(String name, boolean isFinished,
                      String startTime, String endTime) {
         super(name, isFinished);
@@ -17,6 +36,9 @@ public class EventTask extends Task{
         this.endTime = endTime;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getSaveInfo() {
         return "E" + super.getSaveInfo() + " | "

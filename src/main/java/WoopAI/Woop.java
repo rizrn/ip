@@ -1,5 +1,8 @@
 package WoopAI;
 
+/**
+ * Main class to run.
+ */
 public class Woop {
     public static final Ui ui = new Ui();
 

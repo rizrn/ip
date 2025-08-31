@@ -3,9 +3,21 @@ package WoopAI;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * A class for tasks of deadline type.
+ */
 public class DeadlineTask extends Task{
     private LocalDate dueDate;
 
+    /**
+     * Initialises a DeadlineTask object using name and dueDate.
+     * isFinished is set to false by default.
+     * dueDate is parsed into a LocalDate.
+     *
+     * @param name The name of task.
+     * @param dueDate The due date of task.
+     * @throws IllegalDescriptorException If due date given is not a valid date.
+     */
     public DeadlineTask(String name, String dueDate)
             throws IllegalDescriptorException {
         super(name);
@@ -16,6 +28,15 @@ public class DeadlineTask extends Task{
         }
     }
 
+    /**
+     * Initialises a DeadlineTask object using name, dueDate.
+     * The boolean is used to set isFinished.
+     * dueDate is parsed into a LocalDate.
+     *
+     * @param name The name of task.
+     * @param isFinished Whether task is finished.
+     * @param dueDate The due date of task.
+     */
     public DeadlineTask(String name, boolean isFinished, String dueDate) {
         super(name, isFinished);
         this.dueDate = LocalDate.parse(dueDate);
@@ -27,6 +48,9 @@ public class DeadlineTask extends Task{
                 + " " + this.dueDate.getYear();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getSaveInfo() {
         return "D" + super.getSaveInfo()

@@ -1,5 +1,8 @@
 package WoopAI;
 
+/**
+ * Class to output text by Woop.
+ */
 public class Ui {
     private static final String INDENT = "  ";
 
