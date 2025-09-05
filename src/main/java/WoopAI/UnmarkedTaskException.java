@@ -1,5 +1,7 @@
 package WoopAI;
 
+import ui.Ui;
+
 /**
  * Exception to handle if user tries to unmark a unfinished task.
  */

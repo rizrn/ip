@@ -1,16 +1,13 @@
 package WoopAI;
 
+import javafx.application.Application;
+import ui.WoopApp;
+
 /**
  * Main class to run.
  */
 public class Woop {
-    public static final Ui ui = new Ui();
-
     public static void main(String[] args) {
-        Storage.checkDirectory();
-        WoopLogic logic = new WoopLogic(Storage.retrieveSave());
-        Ui.showIntro();
-        logic.run();
-        Ui.showGoodbye();
+        Application.launch(WoopApp.class, args);
     }
 }

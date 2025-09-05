@@ -1,5 +1,7 @@
 package WoopAI;
 
+import ui.Ui;
+
 import java.io.IOException;
 
 import java.nio.file.Files;
