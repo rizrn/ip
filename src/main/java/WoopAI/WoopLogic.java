@@ -1,11 +1,6 @@
 package WoopAI;
 
-import javafx.application.Platform;
-
 import ui.Ui;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Handles main logic of Woop
@@ -24,56 +19,45 @@ public class WoopLogic {
     public String run(String userInput) {
         String command = Parser.parseCommand(userInput);
         if (checkExit(userInput)) {
-            Ui.showGoodbye();
-            CompletableFuture.delayedExecutor(800, TimeUnit.MILLISECONDS)
-                    .execute(Platform::exit);
+            return Ui.showGoodbye();
         }
         try {
             switch (command) { //handles all valid commands
             case "list":
-                Ui.showTaskList(this.tasks);
-                break;
+                return Ui.showTaskList(this.tasks);
             case "mark":
                 int listIndex = Parser.parseIndex(userInput);
-                Ui.showMarked(this.tasks.markTask(listIndex));
-                break;
+                return Ui.showMarked(this.tasks.markTask(listIndex));
             case "unmark":
                 listIndex = Parser.parseIndex(userInput);
-                Ui.showUnmarked(this.tasks.unmarkTask(listIndex));
-                break;
+                return Ui.showUnmarked(this.tasks.unmarkTask(listIndex));
             case "delete":
                 listIndex = Parser.parseIndex(userInput);
-                Ui.showDeleted(this.tasks.deleteTask(listIndex));
-                break;
+                return Ui.showDeleted(this.tasks.deleteTask(listIndex));
             case "todo":
                 Task t = Parser.parseDescriptor(userInput, TaskType.TODO);
-                Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-                break;
+                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
             case "deadline":
                 t = Parser.parseDescriptor(userInput, TaskType.DEADLINE);
-                Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-                break;
+                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
             case "event":
                 t = Parser.parseDescriptor(userInput, TaskType.EVENT);
-                Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-                break;
+                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
             case "find":
                 String keyword = Parser.parseKeyword(userInput);
-                Ui.showFindKeyword(this.tasks.findKeyword(keyword));
-                break;
+                return Ui.showFindKeyword(this.tasks.findKeyword(keyword));
             default:
                 throw new UnknownCommandException();
             }
         } catch (UnknownCommandException e) {
-            Ui.showCommandError(command);
+            return Ui.showCommandError(command);
         } catch (IllegalDescriptorException e) {
-            Ui.showDescriptorError(command);
+            return Ui.showDescriptorError(command);
         } catch (Exception e) {
-            Ui.showError(e);
+            return Ui.showError(e);
         } finally {
             Storage.saveTasks(this.tasks);
         }
-        return "";
     }
 
     private boolean checkExit(String userInput) {

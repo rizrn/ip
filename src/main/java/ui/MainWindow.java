@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -8,6 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import WoopAI.WoopLogic;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Controller for the main GUI.
  */
@@ -45,6 +50,10 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getUserDialog(input),
                 DialogBox.getWoopDialog(response)
         );
+        if (response.equals(Ui.showGoodbye())) {
+            CompletableFuture.delayedExecutor(800, TimeUnit.MILLISECONDS)
+                    .execute(Platform::exit);
+        }
         userInput.clear();
     }
 }

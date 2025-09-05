@@ -26,7 +26,7 @@ public class Ui {
         if (list.isEmpty()) {
             return "Upah! Feed me some tasks to track!";
         } else {
-            return "Upah! I have detected several tasks" + list.toString();
+            return "Upah! I have detected several tasks\n" + list.toString();
         }
 
     }
@@ -35,7 +35,7 @@ public class Ui {
         if (list.isEmpty()) {
             return "Upah! There are no matching tasks in your list";
         } else {
-            return "Upah! Here are the matching tasks in your list" + list.toString();
+            return "Upah! Here are the matching tasks in your list\n" + list.toString();
         }
     }
 
