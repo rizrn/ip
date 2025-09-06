@@ -1,5 +1,7 @@
 package WoopAI;
 
+import ui.Ui;
+
 /**
  * Exception to handle when a task is already finished and user tries to mark it again.
  */
