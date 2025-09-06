@@ -26,9 +26,9 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     private static Image woopImage = new Image(Objects.requireNonNull(
-            DialogBox.class.getResourceAsStream("/images/wooper1.jpg")));
+            DialogBox.class.getResourceAsStream("/images/wooper.png")));
     private static Image userImage = new Image(Objects.requireNonNull(
-            DialogBox.class.getResourceAsStream("/images/lucas1.jpeg")));
+            DialogBox.class.getResourceAsStream("/images/lucas.png")));
 
 
     private DialogBox(String text, Image img) {
