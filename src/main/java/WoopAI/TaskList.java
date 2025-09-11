@@ -23,6 +23,7 @@ public class TaskList {
      * @return Added task converted to string format for output.
      */
     public String addTask(Task t) {
+        assert t != null : "Cannot insert null Task!";
         this.tasks.add(t);
         return t.toString();
     }
