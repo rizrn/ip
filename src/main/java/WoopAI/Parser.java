@@ -4,6 +4,7 @@ package WoopAI;
  * Class to handle all user input and return needed information.
  */
 public class Parser {
+    private static final String SPACE = " ";
     /**
      * Retrieves the command from the given input.
      *
@@ -27,32 +28,40 @@ public class Parser {
      */
     public static Task parseDescriptor(String input, TaskType type)
             throws IllegalDescriptorException, UnknownCommandException {
-        int index = input.indexOf(" ");
+        int index = input.indexOf(SPACE);
         if (index < 0) {
             throw new IllegalDescriptorException();
         }
-        String descriptor = input.substring(index + 1).trim();
+        String descriptor = getDescriptor(input, index);
         if (descriptor.isBlank()) {
             throw new IllegalDescriptorException();
         }
-        switch (type) {
-        case TODO:
-            return new TodoTask(descriptor);
-        case EVENT:
-            String[] tmp = descriptor.split(" /from ");
-            String eventSubject = tmp[0];
-            String[] tmp2 = tmp[1].split(" /to ");
-            String startTime = tmp2[0];
-            String endTime = tmp2[1];
-            return new EventTask(eventSubject, startTime, endTime);
-        case DEADLINE:
-            tmp = descriptor.split(" /by ");
-            String deadlineSubject = tmp[0];
-            String dueDate = tmp[1];
-            return new DeadlineTask(deadlineSubject, dueDate);
-        default:
-            throw new UnknownCommandException();
-        }
+        return switch (type) {
+            case TODO -> new TodoTask(descriptor);
+            case EVENT -> getEventTask(descriptor);
+            case DEADLINE -> getDeadlineTask(descriptor);
+            default -> throw new UnknownCommandException();
+        };
+    }
+
+    private static String getDescriptor(String input, int index) {
+        return input.substring(index + 1).trim();
+    }
+
+    private static DeadlineTask getDeadlineTask(String descriptor) throws IllegalDescriptorException {
+        String[] tmp = descriptor.split(" /by ");
+        String deadlineSubject = tmp[0];
+        String dueDate = tmp[1];
+        return new DeadlineTask(deadlineSubject, dueDate);
+    }
+
+    private static EventTask getEventTask(String descriptor) {
+        String[] tmp = descriptor.split(" /from ", 2);
+        String eventSubject = tmp[0];
+        String[] tmp2 = tmp[1].split(" /to ", 2);
+        String startTime = tmp2[0];
+        String endTime = tmp2[1];
+        return new EventTask(eventSubject, startTime, endTime);
     }
 
     /**
@@ -79,7 +88,8 @@ public class Parser {
         if (!input.contains(" ")) {
             throw new IllegalDescriptorException();
         }
+        int offset = 1;
         String tmp = input.split(" ")[1];
-        return Integer.parseInt(tmp) - 1; // go back to 0-indexing
+        return Integer.parseInt(tmp) - offset; // go back to 0-indexing
     }
 }

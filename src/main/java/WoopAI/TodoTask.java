@@ -4,6 +4,7 @@ package WoopAI;
  * A class for to do type tasks
  */
 public class TodoTask extends Task{
+    private static final String TASK_STRING = "T";
 
     /**
      * Initialises a TodoTask object using name.
@@ -30,12 +31,12 @@ public class TodoTask extends Task{
      */
     @Override
     public String getSaveInfo() {
-        return "T" + super.getSaveInfo();
+        return TASK_STRING + super.getSaveInfo();
     }
 
     @Override
     public String toString() {
-        return "[T]" + super.toString();
+        return "[" + TASK_STRING +"]" + super.toString();
     }
 
     @Override

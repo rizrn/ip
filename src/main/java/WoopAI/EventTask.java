@@ -6,7 +6,7 @@ package WoopAI;
 public class EventTask extends Task{
     private String startTime;
     private String endTime;
-
+    private static final String TASK_STRING = "E";
     /**
      * Initialises a EventTask using name, startTime and endTime.
      * isFinished is set to false by default.
@@ -41,8 +41,8 @@ public class EventTask extends Task{
      */
     @Override
     public String getSaveInfo() {
-        return "E" + super.getSaveInfo() + " | "
-                + this.startTime + " | " + this.endTime;
+        return TASK_STRING + super.getSaveInfo() + DIVIDER
+                + this.startTime + DIVIDER + this.endTime;
 
     }
     @Override

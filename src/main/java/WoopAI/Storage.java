@@ -53,39 +53,44 @@ public class Storage {
      * @return TaskList of tasks in the save state.
      */
     public static TaskList retrieveSave() {
-        if (!Files.exists(PATH) || !Files.isRegularFile(PATH)) {
+        boolean doesFileExist = !Files.exists(PATH) || !Files.isRegularFile(PATH);
+        if (doesFileExist) {
             return new TaskList();
         }
 
         TaskList tasks = new TaskList();
         try {
             List<String> l = Files.readAllLines(PATH);
-            for (int i = 0; i < l.size(); i++) {
-                String[] tmp = l.get(i).split(" \\| ");
-                String name = tmp[2];
-                boolean isFinished = tmp[1].equals("1");
-                switch (tmp[0]) {
-                case "D":
-                    String dueDate = tmp[3];
-                    tasks.addTask(new DeadlineTask(
-                            name, isFinished, dueDate));
-                    break;
-                case "E":
-                    String startTime = tmp[3];
-                    String endTime = tmp[4];
-                    tasks.addTask(new EventTask(name,
-                            isFinished, startTime, endTime));
-                    break;
-                case "T":
-                    tasks.addTask(new TodoTask(name, isFinished));
-                    break;
-                }
-
+            for (String s : l) {
+                extractTask(s, tasks);
             }
         } catch (IOException e) {
            Ui.showIoError();
         }
 
         return tasks;
+    }
+
+    private static void extractTask(String line, TaskList tasks) {
+        String[] lineSplit = line.split(" \\| ");
+        String name = lineSplit[2];
+        boolean isFinished = lineSplit[1].equals("1");
+        String taskType = lineSplit[0];
+        switch (taskType) {
+        case "D":
+            String dueDate = lineSplit[3];
+            tasks.addTask(new DeadlineTask(
+                    name, isFinished, dueDate));
+            break;
+        case "E":
+            String startTime = lineSplit[3];
+            String endTime = lineSplit[4];
+            tasks.addTask(new EventTask(name,
+                    isFinished, startTime, endTime));
+            break;
+        case "T":
+            tasks.addTask(new TodoTask(name, isFinished));
+            break;
+        }
     }
 }

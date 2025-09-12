@@ -85,7 +85,7 @@ public class TaskList {
             sb.append("\n");
         }
 
-        sb.deleteCharAt(sb.length() - 1);
+        deleteNewLine(sb);
         return sb.toString();
     }
 
@@ -118,7 +118,12 @@ public class TaskList {
             sb.append(newLine);
             sb.append("\n");
         }
-        sb.deleteCharAt(sb.length() - 1);
+        deleteNewLine(sb);
         return sb.toString();
+    }
+
+    private static void deleteNewLine(StringBuffer sb) {
+        int offset = 1;
+        sb.deleteCharAt(sb.length() - offset);
     }
 }
