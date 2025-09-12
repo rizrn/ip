@@ -18,8 +18,7 @@ public class DeadlineTask extends Task{
      * @param dueDate The due date of task.
      * @throws IllegalDescriptorException If due date given is not a valid date.
      */
-    public DeadlineTask(String name, String dueDate)
-            throws IllegalDescriptorException {
+    public DeadlineTask(String name, String dueDate) throws IllegalDescriptorException {
         super(name);
         try {
             this.dueDate = LocalDate.parse(dueDate);

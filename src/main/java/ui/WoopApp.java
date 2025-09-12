@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WoopApp extends Application {
+    private static final int MIN_HEIGHT = 220;
+    private static final int MIN_WIDTH = 417;
     private WoopLogic woop;
 
     @Override
@@ -21,22 +23,29 @@ public class WoopApp extends Application {
             Storage.checkDirectory();
             woop = new WoopLogic(Storage.retrieveSave());
             Ui.showIntro();
-
         } catch (Exception e) {
             Ui.showIoError();
         }
 
         try {
-            stage.setMinHeight(220);
-            stage.setMinWidth(417);
-            FXMLLoader fxmlLoader = new FXMLLoader(WoopApp.class.getResource("/view/MainWindow.fxml"));
-            AnchorPane ap = fxmlLoader.load();
-            Scene scene = new Scene(ap);
-            stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setWoop(woop);  // inject the Duke instance
+            setDimensions(stage);
+            loadUi(stage);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setDimensions(Stage s) {
+        s.setMinHeight(MIN_HEIGHT);
+        s.setMinWidth(MIN_WIDTH);
+    }
+
+    private void loadUi(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(WoopApp.class.getResource("/view/MainWindow.fxml"));
+        AnchorPane ap = fxmlLoader.load();
+        Scene scene = new Scene(ap);
+        stage.setScene(scene);
+        fxmlLoader.<MainWindow>getController().setWoop(woop);
     }
 }

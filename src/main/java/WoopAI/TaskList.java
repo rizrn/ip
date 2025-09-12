@@ -77,7 +77,9 @@ public class TaskList {
      */
     public String getTasksSaveFormat() {
         StringBuffer sb = new StringBuffer();
-        if (isEmpty()) return "";
+        if (isEmpty()) {
+            return "";
+        }
         for (int i = 0; i < getSize(); i++) {
             sb.append(this.tasks.get(i).getSaveInfo());
             sb.append("\n");
@@ -107,7 +109,9 @@ public class TaskList {
 
     @Override
     public String toString() {
-        if (isEmpty()) return "";
+        if (isEmpty()) {
+            return "";
+        }
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < getSize(); i++) {
             String newLine = (i + 1) + " " + this.tasks.get(i); //increment i by 1 to start at 1
