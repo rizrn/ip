@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 import java.lang.StringBuffer;
 import java.util.ArrayList;
@@ -68,6 +68,19 @@ public class TaskList {
     public String deleteTask(int index) {
         Task t = this.tasks.get(index);
         this.tasks.remove(index);
+        return t.toString();
+    }
+
+    /**
+     * Tags the Task at the given index.
+     *
+     * @param index The index of the Task to be tagged
+     * @param tag The tag to be assigned to the Task
+     * @return The tagged Task converted to String for output.
+     */
+    public String tagTask(int index, String tag) {
+        Task t = this.tasks.get(index);
+        t.setTag(tag);
         return t.toString();
     }
 

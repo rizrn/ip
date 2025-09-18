@@ -1,6 +1,6 @@
-package ui;
+package woop.ui;
 
-import WoopAI.TaskList;
+import woop.logic.TaskList;
 
 /**
  * Class to output text by Woop.
@@ -64,5 +64,9 @@ public class Ui {
 
     public static String showIoError() {
         return "Upah! I cannot access your saved tasks";
+    }
+
+    public static String showTagTask(String task) {
+        return "Upah! I have tagged this task:\n" + INDENT + task;
     }
 }

@@ -1,6 +1,6 @@
-package WoopAI;
+package woop.logic;
 
-import ui.Ui;
+import woop.ui.Ui;
 
 /**
  * Exception to handle when a task is already finished and user tries to mark it again.

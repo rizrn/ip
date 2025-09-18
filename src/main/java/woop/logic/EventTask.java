@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * A class for event type task.
@@ -22,16 +22,18 @@ public class EventTask extends Task{
     }
 
     /**
-     * Initialises a EventTask using name, isFinished, startTime and endTime.
+     * Initialises a EventTask using name, isFinished, tag, startTime and endTime.
+     * Used by Storage to initialise saved tasks.
      *
      * @param name The name of task.
      * @param isFinished Whether task is finished.
      * @param startTime The start time of task.
      * @param endTime The end time of task.
+     * @param tag The tag of task.
      */
-    public EventTask(String name, boolean isFinished,
+    public EventTask(String name, boolean isFinished, String tag,
                      String startTime, String endTime) {
-        super(name, isFinished);
+        super(name, isFinished, tag);
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -49,7 +51,7 @@ public class EventTask extends Task{
     public String toString() {
         return "[E]" + super.toString()
                 + " (from: " + this.startTime
-                + " to: " + this.endTime + ")";
+                + " to: " + this.endTime + ") " + getTag();
     }
 
     @Override

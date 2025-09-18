@@ -1,9 +1,7 @@
-package ui;
+package woop.ui;
 
-import WoopAI.Storage;
-import WoopAI.TaskList;
-import WoopAI.Woop;
-import WoopAI.WoopLogic;
+import woop.logic.Storage;
+import woop.logic.WoopLogic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,18 +17,14 @@ public class WoopApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        try {
-            Storage.checkDirectory();
-            woop = new WoopLogic(Storage.retrieveSave());
-            Ui.showIntro();
-        } catch (Exception e) {
-            Ui.showIoError();
-        }
+        Storage.checkDirectory();
+        woop = new WoopLogic(Storage.retrieveSave());
 
         try {
             setDimensions(stage);
             loadUi(stage);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

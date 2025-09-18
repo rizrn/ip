@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * An abstract class for all Task types
@@ -6,6 +6,7 @@ package WoopAI;
 public abstract class Task {
     private String name;
     private boolean isFinished;
+    private String tag;
     public static final String DIVIDER = " | ";
 
     /**
@@ -18,6 +19,7 @@ public abstract class Task {
         assert name != null : "Name cannot be null!";
         this.name = name;
         this.isFinished = false;
+        this.tag = "";
     }
 
     /**
@@ -26,10 +28,11 @@ public abstract class Task {
      * @param name The name of the task.
      * @param isFinished True if task is finished, false otherwise.
      */
-    public Task(String name, boolean isFinished) {
+    public Task(String name, boolean isFinished, String tag) {
         assert name != null : "Name cannot be null!";
         this.name = name;
         this.isFinished = isFinished;
+        this.tag = tag;
     }
 
     public boolean getIsFinished() {
@@ -65,11 +68,30 @@ public abstract class Task {
      */
     public String getSaveInfo() {
         String encodeIsFinished = this.isFinished ? "1" : "0";
-        return DIVIDER + encodeIsFinished + DIVIDER + this.name;
-    };
+        String tagSave = isTagged() ? tag : "null";
+        return DIVIDER + encodeIsFinished + DIVIDER + this.name + DIVIDER + tagSave;
+    }
 
     public boolean containsText(String text) {
         return this.name.contains(text);
+    }
+
+    public void setTag(String inputTag) {
+        this.tag = inputTag;
+    }
+
+    public String getTag() {
+        if (isTagged()) {
+            return "#" + tag;
+        }
+        return "";
+    }
+
+    public boolean isTagged() {
+        if (tag == null) {
+            return false;
+        }
+        return !tag.isEmpty();
     }
 
     @Override

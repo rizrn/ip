@@ -1,6 +1,8 @@
-package WoopAI;
+package woop;
 
 import org.junit.jupiter.api.Test;
+import woop.logic.EventTask;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 

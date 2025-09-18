@@ -1,9 +1,9 @@
-package WoopAI;
+package woop.logic;
 
-import ui.Ui;
+import woop.ui.Ui;
 
 /**
- * Handles main logic of Woop
+ * Handles main logic of Woop.
  */
 public class WoopLogic {
     private static final String EXIT = "bye"; //String constant to exit loop
@@ -61,6 +61,10 @@ public class WoopLogic {
         case "find":
             String keyword = Parser.parseKeyword(userInput);
             return Ui.showFindKeyword(this.tasks.findKeyword(keyword));
+        case "tag":
+            int tagIdx = Parser.parseTagIndex(userInput);
+            String tagDesc = Parser.parseTag(userInput);
+            return Ui.showTagTask(this.tasks.tagTask(tagIdx, tagDesc));
         default:
             throw new UnknownCommandException();
         }

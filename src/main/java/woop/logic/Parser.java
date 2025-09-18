@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * Class to handle all user input and return needed information.
@@ -74,6 +74,29 @@ public class Parser {
     public static String parseKeyword(String input) {
         String[] tmp = input.split(" ", 2);
         return tmp[1];
+    }
+
+    /**
+     * Retrieves the tag index from the user input.
+     *
+     * @param input The user input.
+     * @return The tag index for tagging the Task.
+     */
+    public static int parseTagIndex(String input) {
+        int offset = 1;
+        String[] tmp = input.split(" ", 3);
+        return Integer.parseInt(tmp[1]) - offset; //go back to 0-indexing
+    }
+
+    /**
+     * Retrieves the tag from the user input.
+     *
+     * @param input The user input.
+     * @return The tag for tagging the Task.
+     */
+    public static String parseTag(String input) {
+        String[] tmp = input.split(" ", 3);
+        return tmp[2];
     }
 
     /**
