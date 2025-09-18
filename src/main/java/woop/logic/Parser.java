@@ -83,8 +83,9 @@ public class Parser {
      * @return The tag index for tagging the Task.
      */
     public static int parseTagIndex(String input) {
+        int offset = 1;
         String[] tmp = input.split(" ", 3);
-        return Integer.parseInt(tmp[1]);
+        return Integer.parseInt(tmp[1]) - offset; //go back to 0-indexing
     }
 
     /**
