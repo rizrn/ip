@@ -72,24 +72,32 @@ public class Storage {
     }
 
     private static void extractTask(String line, TaskList tasks) {
+        int typeIndex = 0;
+        int finishedIndex = 1;
+        int nameIndex = 2;
+        int tagIndex = 3;
+
         String[] lineSplit = line.split(" \\| ");
-        String name = lineSplit[2];
-        boolean isFinished = lineSplit[1].equals("1");
-        String taskType = lineSplit[0];
+
+        String taskType = lineSplit[typeIndex];
+        boolean isFinished = lineSplit[finishedIndex].equals("1");
+        String name = lineSplit[nameIndex];
+        String tag = lineSplit[tagIndex];
         switch (taskType) {
         case "D":
-            String dueDate = lineSplit[3];
-            tasks.addTask(new DeadlineTask(
-                    name, isFinished, dueDate));
+            int dateIndex = 4;
+            String dueDate = lineSplit[dateIndex];
+            tasks.addTask(new DeadlineTask(name, isFinished, tag, dueDate));
             break;
         case "E":
-            String startTime = lineSplit[3];
-            String endTime = lineSplit[4];
-            tasks.addTask(new EventTask(name,
-                    isFinished, startTime, endTime));
+            int startIndex = 4;
+            int endIndex = 5;
+            String startTime = lineSplit[startIndex];
+            String endTime = lineSplit[endIndex];
+            tasks.addTask(new EventTask(name, isFinished, tag, startTime, endTime));
             break;
         case "T":
-            tasks.addTask(new TodoTask(name, isFinished));
+            tasks.addTask(new TodoTask(name, isFinished, tag));
             break;
         }
     }

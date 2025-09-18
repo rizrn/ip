@@ -28,10 +28,11 @@ public abstract class Task {
      * @param name The name of the task.
      * @param isFinished True if task is finished, false otherwise.
      */
-    public Task(String name, boolean isFinished) {
+    public Task(String name, boolean isFinished, String tag) {
         assert name != null : "Name cannot be null!";
         this.name = name;
         this.isFinished = isFinished;
+        this.tag = tag;
     }
 
     public boolean getIsFinished() {
@@ -67,7 +68,8 @@ public abstract class Task {
      */
     public String getSaveInfo() {
         String encodeIsFinished = this.isFinished ? "1" : "0";
-        return DIVIDER + encodeIsFinished + DIVIDER + this.name;
+        String tagSave = tag == null ? "" : tag;
+        return DIVIDER + encodeIsFinished + DIVIDER + this.name + DIVIDER + tagSave + DIVIDER;
     }
 
     public boolean containsText(String text) {

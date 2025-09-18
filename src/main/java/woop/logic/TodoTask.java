@@ -17,13 +17,15 @@ public class TodoTask extends Task{
     }
 
     /**
-     * Initialises a TodoTask object using name and isFinished.
+     * Initialises a TodoTask object using name and isFinished and tag.
+     * Used by Storage to initialise saved tasks.
      *
      * @param name The name of task.
      * @param isFinished Whether task is finished.
+     * @param tag The tag of task.
      */
-    public TodoTask(String name, boolean isFinished) {
-        super(name, isFinished);
+    public TodoTask(String name, boolean isFinished, String tag) {
+        super(name, isFinished, tag);
     }
 
     /**
