@@ -78,13 +78,15 @@ public class TaskList {
      */
     public String getTasksSaveFormat() {
         StringBuffer sb = new StringBuffer();
-        if (isEmpty()) return "";
+        if (isEmpty()) {
+            return "";
+        }
         for (int i = 0; i < getSize(); i++) {
             sb.append(this.tasks.get(i).getSaveInfo());
             sb.append("\n");
         }
 
-        sb.deleteCharAt(sb.length() - 1);
+        deleteNewLine(sb);
         return sb.toString();
     }
 
@@ -108,14 +110,21 @@ public class TaskList {
 
     @Override
     public String toString() {
-        if (isEmpty()) return "";
+        if (isEmpty()) {
+            return "";
+        }
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < getSize(); i++) {
             String newLine = (i + 1) + " " + this.tasks.get(i); //increment i by 1 to start at 1
             sb.append(newLine);
             sb.append("\n");
         }
-        sb.deleteCharAt(sb.length() - 1);
+        deleteNewLine(sb);
         return sb.toString();
+    }
+
+    private static void deleteNewLine(StringBuffer sb) {
+        int offset = 1;
+        sb.deleteCharAt(sb.length() - offset);
     }
 }

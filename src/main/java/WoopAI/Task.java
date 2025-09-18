@@ -6,6 +6,7 @@ package WoopAI;
 public abstract class Task {
     private String name;
     private boolean isFinished;
+    public static final String DIVIDER = " | ";
 
     /**
      * Initialises a Task object by using the given name.
@@ -41,22 +42,20 @@ public abstract class Task {
      * @return Whether task was completed successfully or not.
      */
     public void mark() throws MarkedTaskException {
-        if (!this.isFinished) {
-            this.isFinished = true;
-        } else {
+        if (this.isFinished) {
             throw new MarkedTaskException(this);
         }
+        this.isFinished = true;
     }
 
     /**
      * Marks task as finished.
      */
     public void unmark() throws UnmarkedTaskException {
-        if (this.isFinished) {
-            this.isFinished = false;
-        } else {
+        if (!this.isFinished) {
             throw new UnmarkedTaskException(this);
         }
+        this.isFinished = false;
     }
 
     /**
@@ -65,8 +64,8 @@ public abstract class Task {
      * @return Encoded string for save state.
      */
     public String getSaveInfo() {
-        return " | " + (this.isFinished ? "1" : "0")
-                + " | " + this.name;
+        String encodeIsFinished = this.isFinished ? "1" : "0";
+        return DIVIDER + encodeIsFinished + DIVIDER + this.name;
     };
 
     public boolean containsText(String text) {

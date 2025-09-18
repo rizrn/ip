@@ -22,33 +22,7 @@ public class WoopLogic {
             return Ui.showGoodbye();
         }
         try {
-            switch (command) { //handles all valid commands
-            case "list":
-                return Ui.showTaskList(this.tasks);
-            case "mark":
-                int listIndex = Parser.parseIndex(userInput);
-                return Ui.showMarked(this.tasks.markTask(listIndex));
-            case "unmark":
-                listIndex = Parser.parseIndex(userInput);
-                return Ui.showUnmarked(this.tasks.unmarkTask(listIndex));
-            case "delete":
-                listIndex = Parser.parseIndex(userInput);
-                return Ui.showDeleted(this.tasks.deleteTask(listIndex));
-            case "todo":
-                Task t = Parser.parseDescriptor(userInput, TaskType.TODO);
-                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-            case "deadline":
-                t = Parser.parseDescriptor(userInput, TaskType.DEADLINE);
-                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-            case "event":
-                t = Parser.parseDescriptor(userInput, TaskType.EVENT);
-                return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
-            case "find":
-                String keyword = Parser.parseKeyword(userInput);
-                return Ui.showFindKeyword(this.tasks.findKeyword(keyword));
-            default:
-                throw new UnknownCommandException();
-            }
+            return getWoopResponse(userInput, command);
         } catch (UnknownCommandException e) {
             return Ui.showCommandError(command);
         } catch (IllegalDescriptorException e) {
@@ -57,6 +31,38 @@ public class WoopLogic {
             return Ui.showError(e);
         } finally {
             Storage.saveTasks(this.tasks);
+        }
+    }
+
+    private String getWoopResponse(String userInput, String command)
+            throws IllegalDescriptorException, MarkedTaskException,
+            UnmarkedTaskException, UnknownCommandException {
+        switch (command) { //handles all valid commands
+        case "list":
+            return Ui.showTaskList(this.tasks);
+        case "mark":
+            int listIndex = Parser.parseIndex(userInput);
+            return Ui.showMarked(this.tasks.markTask(listIndex));
+        case "unmark":
+            listIndex = Parser.parseIndex(userInput);
+            return Ui.showUnmarked(this.tasks.unmarkTask(listIndex));
+        case "delete":
+            listIndex = Parser.parseIndex(userInput);
+            return Ui.showDeleted(this.tasks.deleteTask(listIndex));
+        case "todo":
+            Task t = Parser.parseDescriptor(userInput, TaskType.TODO);
+            return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
+        case "deadline":
+            t = Parser.parseDescriptor(userInput, TaskType.DEADLINE);
+            return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
+        case "event":
+            t = Parser.parseDescriptor(userInput, TaskType.EVENT);
+            return Ui.showAddTask(this.tasks.addTask(t), this.tasks.getSize());
+        case "find":
+            String keyword = Parser.parseKeyword(userInput);
+            return Ui.showFindKeyword(this.tasks.findKeyword(keyword));
+        default:
+            throw new UnknownCommandException();
         }
     }
 

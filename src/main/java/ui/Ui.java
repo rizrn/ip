@@ -12,12 +12,6 @@ public class Ui {
         return "Upah! I'm Woop\nWhat can I do for you?";
     }
 
-    public static void showWoopDialogue(String text) {
-        DialogBox dialog = DialogBox.getWoopDialog(text);
-
-
-    }
-
     public static String showGoodbye() {
         return "Upah! Hope to see you again soon!";
     }
@@ -52,9 +46,8 @@ public class Ui {
     }
 
     public static String showAddTask(String task, int size) {
-        String result = "Upah! You're busy! I added this task:\n"
+        return "Upah! You're busy! I added this task:\n"
                 + INDENT + task + "\nYou have " + size + " task(s) now";
-        return result;
     }
 
     public static String showCommandError(String command) {

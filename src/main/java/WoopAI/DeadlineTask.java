@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
  */
 public class DeadlineTask extends Task{
     private LocalDate dueDate;
+    private static final String TASK_STRING = "D";
 
     /**
      * Initialises a DeadlineTask object using name and dueDate.
@@ -18,8 +19,7 @@ public class DeadlineTask extends Task{
      * @param dueDate The due date of task.
      * @throws IllegalDescriptorException If due date given is not a valid date.
      */
-    public DeadlineTask(String name, String dueDate)
-            throws IllegalDescriptorException {
+    public DeadlineTask(String name, String dueDate) throws IllegalDescriptorException {
         super(name);
         try {
             this.dueDate = LocalDate.parse(dueDate);
@@ -53,13 +53,13 @@ public class DeadlineTask extends Task{
      */
     @Override
     public String getSaveInfo() {
-        return "D" + super.getSaveInfo()
-                + " | " + this.dueDate.toString();
+        return TASK_STRING + super.getSaveInfo()
+                + DIVIDER + this.dueDate.toString();
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString()
+        return "[" + TASK_STRING + "]" + super.toString()
                 + " (by: " + getDateString() + ")";
     }
 
