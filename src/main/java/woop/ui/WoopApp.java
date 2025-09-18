@@ -17,14 +17,9 @@ public class WoopApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        try {
-            Storage.checkDirectory();
-            woop = new WoopLogic(Storage.retrieveSave());
-            Ui.showIntro();
-        } catch (Exception e) {
-            Ui.showIoError();
-            e.printStackTrace();
-        }
+        Storage.checkDirectory();
+        woop = new WoopLogic(Storage.retrieveSave());
+        Ui.showIntro();
 
         try {
             setDimensions(stage);

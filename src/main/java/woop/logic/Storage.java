@@ -83,6 +83,9 @@ public class Storage {
         boolean isFinished = lineSplit[finishedIndex].equals("1");
         String name = lineSplit[nameIndex];
         String tag = lineSplit[tagIndex];
+        if (tag.equals("null")) {
+            tag = null;
+        }
         switch (taskType) {
         case "D":
             int dateIndex = 4;

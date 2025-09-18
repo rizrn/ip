@@ -68,8 +68,8 @@ public abstract class Task {
      */
     public String getSaveInfo() {
         String encodeIsFinished = this.isFinished ? "1" : "0";
-        String tagSave = tag == null ? "" : tag;
-        return DIVIDER + encodeIsFinished + DIVIDER + this.name + DIVIDER + tagSave + DIVIDER;
+        String tagSave = isTagged() ? tag : "null";
+        return DIVIDER + encodeIsFinished + DIVIDER + this.name + DIVIDER + tagSave;
     }
 
     public boolean containsText(String text) {
