@@ -11,11 +11,18 @@
     -fx-border-width: 2px;
     -fx-background-radius: 1em 1em 0 1em;
     -fx-border-radius: 1em 1em 0 1em;
+    -fx-font: 16px "Consolas";
+}
+
+.label:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2, 2);
+    -fx-translate-y: -1px;
 }
 
 .reply-label {
     -fx-background-radius: 1em 1em 1em 0;
     -fx-border-radius: 1em 1em 1em 0;
+    -fx-font: 16px "Consolas";
 }
 
 #displayPicture {
