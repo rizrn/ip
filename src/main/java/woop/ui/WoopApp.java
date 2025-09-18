@@ -19,12 +19,12 @@ public class WoopApp extends Application {
     public void start(Stage stage) {
         Storage.checkDirectory();
         woop = new WoopLogic(Storage.retrieveSave());
-        Ui.showIntro();
 
         try {
             setDimensions(stage);
             loadUi(stage);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

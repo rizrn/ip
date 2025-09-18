@@ -31,16 +31,24 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        showInitialMessage();
     }
 
-    /** Injects the Duke instance */
+    /** Injects the Woop instance */
     public void setWoop(WoopLogic w) {
         woop = w;
     }
 
+    public void showInitialMessage() {
+        dialogContainer.getChildren().add(
+                DialogBox.getWoopDialog(Ui.showIntro())
+        );
+    }
+
     /**
      * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
-     * the dialog container. Clears the user input after processing.
+     * the dialog container.
+     * Clears the user input after processing.
      */
     @FXML
     private void handleUserInput() {
