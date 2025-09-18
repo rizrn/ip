@@ -1,6 +1,6 @@
-package WoopAI;
+package woop.logic;
 
-import ui.Ui;
+import woop.ui.Ui;
 
 import java.io.IOException;
 

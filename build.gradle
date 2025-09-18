@@ -43,7 +43,7 @@ test {
 }
 
 application {
-    mainClass.set("WoopAI.Woop")
+    mainClass.set("woop.logic.Woop")
 }
 
 shadowJar {

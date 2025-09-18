@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 import java.lang.StringBuffer;
 import java.util.ArrayList;

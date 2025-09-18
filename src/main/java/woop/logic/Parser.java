@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * Class to handle all user input and return needed information.

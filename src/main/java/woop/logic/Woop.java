@@ -1,7 +1,7 @@
-package WoopAI;
+package woop.logic;
 
 import javafx.application.Application;
-import ui.WoopApp;
+import woop.ui.WoopApp;
 
 /**
  * Main class to run.

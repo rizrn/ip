@@ -1,6 +1,6 @@
-package ui;
+package woop.ui;
 
-import WoopAI.TaskList;
+import woop.logic.TaskList;
 
 /**
  * Class to output text by Woop.

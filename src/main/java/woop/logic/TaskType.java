@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 public enum TaskType {
     TODO,

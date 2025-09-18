@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * An abstract class for all Task types

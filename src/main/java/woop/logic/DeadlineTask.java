@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

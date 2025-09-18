@@ -1,6 +1,6 @@
-package WoopAI;
+package woop.logic;
 
-import ui.Ui;
+import woop.ui.Ui;
 
 /**
  * Exception to handle if user tries to unmark a unfinished task.

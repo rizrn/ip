@@ -1,4 +1,4 @@
-package WoopAI;
+package woop.logic;
 
 /**
  * A class for to do type tasks

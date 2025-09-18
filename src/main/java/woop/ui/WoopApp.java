@@ -1,9 +1,7 @@
-package ui;
+package woop.ui;
 
-import WoopAI.Storage;
-import WoopAI.TaskList;
-import WoopAI.Woop;
-import WoopAI.WoopLogic;
+import woop.logic.Storage;
+import woop.logic.WoopLogic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

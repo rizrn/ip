@@ -1,7 +1,14 @@
-package WoopAI;
+package woop;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import woop.logic.DeadlineTask;
+import woop.logic.EventTask;
+import woop.logic.IllegalDescriptorException;
+import woop.logic.Parser;
+import woop.logic.Task;
+import woop.logic.TaskType;
+import woop.logic.TodoTask;
+import woop.logic.UnknownCommandException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
