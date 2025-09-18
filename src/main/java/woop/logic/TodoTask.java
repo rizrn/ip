@@ -36,7 +36,7 @@ public class TodoTask extends Task{
 
     @Override
     public String toString() {
-        return "[" + TASK_STRING +"]" + super.toString();
+        return "[" + TASK_STRING +"]" + super.toString() + " " + getTag();
     }
 
     @Override

@@ -72,6 +72,19 @@ public class TaskList {
     }
 
     /**
+     * Tags the Task at the given index.
+     *
+     * @param index The index of the Task to be tagged
+     * @param tag The tag to be assigned to the Task
+     * @return The tagged Task converted to String for output.
+     */
+    public String tagTask(int index, String tag) {
+        Task t = this.tasks.get(index);
+        t.setTag(tag);
+        return t.toString();
+    }
+
+    /**
      * Converts all Tasks in the list to the save format for save state.
      *
      * @return All Tasks in save format.

@@ -60,7 +60,7 @@ public class DeadlineTask extends Task{
     @Override
     public String toString() {
         return "[" + TASK_STRING + "]" + super.toString()
-                + " (by: " + getDateString() + ")";
+                + " (by: " + getDateString() + ") " + getTag();
     }
 
     @Override

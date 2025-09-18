@@ -49,7 +49,7 @@ public class EventTask extends Task{
     public String toString() {
         return "[E]" + super.toString()
                 + " (from: " + this.startTime
-                + " to: " + this.endTime + ")";
+                + " to: " + this.endTime + ") " + getTag();
     }
 
     @Override

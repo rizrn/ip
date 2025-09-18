@@ -23,6 +23,7 @@ public class WoopApp extends Application {
             Ui.showIntro();
         } catch (Exception e) {
             Ui.showIoError();
+            e.printStackTrace();
         }
 
         try {

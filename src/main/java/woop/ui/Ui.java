@@ -65,4 +65,8 @@ public class Ui {
     public static String showIoError() {
         return "Upah! I cannot access your saved tasks";
     }
+
+    public static String showTagTask(String task) {
+        return "Upah! I have tagged this task:\n" + INDENT + task;
+    }
 }

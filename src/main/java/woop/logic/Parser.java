@@ -77,6 +77,28 @@ public class Parser {
     }
 
     /**
+     * Retrieves the tag index from the user input.
+     *
+     * @param input The user input.
+     * @return The tag index for tagging the Task.
+     */
+    public static int parseTagIndex(String input) {
+        String[] tmp = input.split(" ", 3);
+        return Integer.parseInt(tmp[1]);
+    }
+
+    /**
+     * Retrieves the tag from the user input.
+     *
+     * @param input The user input.
+     * @return The tag for tagging the Task.
+     */
+    public static String parseTag(String input) {
+        String[] tmp = input.split(" ", 3);
+        return tmp[2];
+    }
+
+    /**
      * Retrieves the index of the task from the user input.
      * The index of the task is used for commands that require to edit at specific indexes.
      *

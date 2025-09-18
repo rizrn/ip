@@ -6,6 +6,7 @@ package woop.logic;
 public abstract class Task {
     private String name;
     private boolean isFinished;
+    private String tag;
     public static final String DIVIDER = " | ";
 
     /**
@@ -18,6 +19,7 @@ public abstract class Task {
         assert name != null : "Name cannot be null!";
         this.name = name;
         this.isFinished = false;
+        this.tag = "";
     }
 
     /**
@@ -66,10 +68,28 @@ public abstract class Task {
     public String getSaveInfo() {
         String encodeIsFinished = this.isFinished ? "1" : "0";
         return DIVIDER + encodeIsFinished + DIVIDER + this.name;
-    };
+    }
 
     public boolean containsText(String text) {
         return this.name.contains(text);
+    }
+
+    public void setTag(String inputTag) {
+        this.tag = inputTag;
+    }
+
+    public String getTag() {
+        if (isTagged()) {
+            return "#" + tag;
+        }
+        return "";
+    }
+
+    public boolean isTagged() {
+        if (tag == null) {
+            return false;
+        }
+        return !tag.isEmpty();
     }
 
     @Override
