@@ -3,7 +3,7 @@ package woop.logic;
 /**
  * A class for to do type tasks.
  */
-public class TodoTask extends Task{
+public class TodoTask extends Task {
     private static final String TASK_STRING = "T";
 
     /**
@@ -38,7 +38,7 @@ public class TodoTask extends Task{
 
     @Override
     public String toString() {
-        return "[" + TASK_STRING +"]" + super.toString() + " " + getTag();
+        return "[" + TASK_STRING + "]" + super.toString() + " " + getTag();
     }
 
     @Override

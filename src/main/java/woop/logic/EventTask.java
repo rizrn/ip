@@ -3,10 +3,11 @@ package woop.logic;
 /**
  * A class for event type task.
  */
-public class EventTask extends Task{
+public class EventTask extends Task {
+    private static final String TASK_STRING = "E";
     private String startTime;
     private String endTime;
-    private static final String TASK_STRING = "E";
+
     /**
      * Initialises a EventTask using name, startTime and endTime.
      * isFinished is set to false by default.

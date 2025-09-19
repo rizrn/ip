@@ -1,17 +1,17 @@
 package woop.ui;
 
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import woop.logic.Storage;
 import woop.logic.WoopLogic;
-
-import java.io.IOException;
 
 public class WoopApp extends Application {
     private static final int MIN_HEIGHT = 220;

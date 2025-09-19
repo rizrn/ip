@@ -1,14 +1,14 @@
 package woop.logic;
 
-import woop.ui.Ui;
+
 
 import java.io.IOException;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import java.util.List;
+
+import woop.ui.Ui;
 
 /**
  * Class that handles save states.
@@ -65,7 +65,7 @@ public class Storage {
                 extractTask(s, tasks);
             }
         } catch (IOException e) {
-           Ui.showIoError();
+            Ui.showIoError();
         }
 
         return tasks;
@@ -101,6 +101,9 @@ public class Storage {
             break;
         case "T":
             tasks.addTask(new TodoTask(name, isFinished, tag));
+            break;
+        default:
+            // do nothing
             break;
         }
     }

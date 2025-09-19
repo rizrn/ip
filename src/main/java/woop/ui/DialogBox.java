@@ -20,16 +20,14 @@ import javafx.scene.layout.HBox;
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
+    private static final Image WOOP_IMAGE = new Image(Objects.requireNonNull(
+            DialogBox.class.getResourceAsStream("/images/wooper.png")));
+    private static final Image USER_IMAGE = new Image(Objects.requireNonNull(
+            DialogBox.class.getResourceAsStream("/images/lucas.png")));
     @FXML
     private Label dialog;
     @FXML
     private ImageView displayPicture;
-
-    private static Image woopImage = new Image(Objects.requireNonNull(
-            DialogBox.class.getResourceAsStream("/images/wooper.png")));
-    private static Image userImage = new Image(Objects.requireNonNull(
-            DialogBox.class.getResourceAsStream("/images/lucas.png")));
-
 
     private DialogBox(String text, Image img) {
         try {
@@ -57,11 +55,11 @@ public class DialogBox extends HBox {
     }
 
     public static DialogBox getUserDialog(String text) {
-        return new DialogBox(text, userImage);
+        return new DialogBox(text, USER_IMAGE);
     }
 
     public static DialogBox getWoopDialog(String text) {
-        var db = new DialogBox(text, woopImage);
+        var db = new DialogBox(text, WOOP_IMAGE);
         db.flip();
         return db;
     }

@@ -1,6 +1,5 @@
 package woop.logic;
 
-import java.lang.StringBuffer;
 import java.util.ArrayList;
 
 /**
@@ -110,7 +109,7 @@ public class TaskList {
                 resList.addTask(task);
             }
         }
-        return  resList;
+        return resList;
     }
 
     public int getSize() {

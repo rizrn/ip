@@ -26,6 +26,7 @@ public class Parser {
      * @throws IllegalDescriptorException If descriptor syntax is invalid.
      * @throws UnknownCommandException If type given is invalid.
      */
+    @SuppressWarnings("checkstyle:Indentation")
     public static Task parseDescriptor(String input, TaskType type)
             throws IllegalDescriptorException, UnknownCommandException {
         int index = input.indexOf(SPACE);
@@ -36,12 +37,14 @@ public class Parser {
         if (descriptor.isBlank()) {
             throw new IllegalDescriptorException();
         }
+        // CHECKSTYLE OFF: Indentation
         return switch (type) {
             case TODO -> new TodoTask(descriptor);
             case EVENT -> getEventTask(descriptor);
             case DEADLINE -> getDeadlineTask(descriptor);
             default -> throw new UnknownCommandException();
         };
+        // CHECKSTYLE ON: Indentation
     }
 
     private static String getDescriptor(String input, int index) {

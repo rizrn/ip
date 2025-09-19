@@ -4,10 +4,10 @@ package woop.logic;
  * An abstract class for all Task types.
  */
 public abstract class Task {
+    public static final String DIVIDER = " | ";
     private String name;
     private boolean isFinished;
     private String tag;
-    public static final String DIVIDER = " | ";
 
     /**
      * Initialises a Task object by using the given name.
@@ -41,8 +41,6 @@ public abstract class Task {
 
     /**
      * Marks task as finished.
-     *
-     * @return Whether task was completed successfully or not.
      */
     public void mark() throws MarkedTaskException {
         if (this.isFinished) {
