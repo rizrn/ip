@@ -1,6 +1,6 @@
 # Woop User Guide
 
-<img alt="wooplogo" src="Ui.png" style="border-radius: 8px; width:300px;"/>
+<img alt="wooplogo" src="Ui.png" style="border-radius: 8px; width:400px;"/>
 
 The cutest chatbot in the world! (Will probably swim into rocks too)
 ## Table of Contents
