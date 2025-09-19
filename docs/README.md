@@ -39,64 +39,64 @@ The cutest chatbot in the world! (Will probably swim into rocks too)
 > - All indexes are 1-based, e.g. the first task is task 1, the second task is task 2, and so on.
 
 ### Adding a Todo Task: `todo`
-Adds a todo task to the task list.
-Format: `todo DESCRIPTOR`
+Adds a todo task to the task list.\
+Format: `todo DESCRIPTOR`\
 Examples: 
 - `todo read book`
 - `todo repair car`
 
 ### Adding a Deadline Task: `deadline`
-Adds a deadline task to the task list.
-Format: `deadline DESCRIPTOR /by DATE`
+Adds a deadline task to the task list.\
+Format: `deadline DESCRIPTOR /by DATE`\
 Examples:
 - `deadline submit report /by 2025-10-31`
 - `deadline pay rent /by 2025-11-01`
 
 ### Adding an Event Task: `event`
-Adds an event task to the task list.
-Format: `event DESCRIPTOR /from TIME /to TIME`
+Adds an event task to the task list.\
+Format: `event DESCRIPTOR /from TIME /to TIME`\
 Examples:
 - `event project meeting /from 14:00 /to 16:00`
 - `event birthday party /from tmr 5pm /to tmr 6pm`
 
 ### Listing All Tasks: `list`
-Displays all tasks in the task list with their status (done or not done) and tags.
+Displays all tasks in the task list with their status (done or not done) and tags.\
 Format: `list`
 
 ### Marking a Task as Done: `mark`
-Marks a task as done based on its index in the task list.
-Format: `mark INDEX`
+Marks a task as done based on its index in the task list.\
+Format: `mark INDEX`\
 Example: `mark 2` marks the second task as done.
 
 ### Unmarking a Task: `unmark`
-Unmarks a task as not done based on its index in the task list.
-Format: `unmark INDEX`
+Unmarks a task as not done based on its index in the task list.\
+Format: `unmark INDEX`\
 Example: `unmark 2` marks the second task as not done.
 
 ### Deleting a Task: `delete`
-Deletes a task from the task list based on its index.
-Format: `delete INDEX`
+Deletes a task from the task list based on its index.\
+Format: `delete INDEX`\
 Example: `delete 3` deletes the third task.
 
 ### Finding Tasks by Keyword: `find`
-Finds and lists all tasks that contain the specified keyword in their description.
-Format: `find KEYWORD`
+Finds and lists all tasks that contain the specified keyword in their description.\
+Format: `find KEYWORD`\
 Example: 
 - `find book` lists all tasks with "book" in their description.
 - `find meeting` lists all tasks with "meeting" in their description.
 
 ### Tagging a Task: `tag`
-Adds a tag to a task based on its index in the task list.
-Format: `tag INDEX TAG`
+Adds a tag to a task based on its index in the task list.\
+Format: `tag INDEX TAG`\
 Example: 
 - `tag 1 urgent` adds the tag "urgent" to the first task.
 - `tag 2  ` removes any tag from the second task.
 
 ### Exiting the Application: `bye`
-Exits the application.
+Exits the application.\
 Format: `bye`
 
 ### Saving the data
 Woop automatically saves all your tasks in a file named `data.txt` in the data directory
-after every command that modifies the task list. The data file is created automatically
-if it does not exist. Do not modify this file manually as it may corrupt the data.
+after every command that modifies the task list.\
+The data file is created automatically if it does not exist. Do not modify this file manually as it may corrupt the data.
