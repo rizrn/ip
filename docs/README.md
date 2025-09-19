@@ -34,8 +34,7 @@ The cutest chatbot in the world! (Will probably swim into rocks too)
 > - DATE should be in the format YYYY-MM-DD, e.g. `2023-10-31`.
 > - Do not put spaces in front of any commands.
 > - Parameters should be separated by a single space.
-> - Extraneous parameters for commands that do not take in parameters (such as help, list, exit and clear) 
->   will be ignored.
+> - Extraneous parameters for commands that do not take in parameters (such as list and bye) will be ignored.
 > - All indexes are 1-based, e.g. the first task is task 1, the second task is task 2, and so on.
 
 ### Adding a Todo Task: `todo`
