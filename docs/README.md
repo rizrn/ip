@@ -89,7 +89,7 @@ Adds a tag to a task based on its index in the task list.\
 Format: `tag INDEX TAG`\
 Example: 
 - `tag 1 urgent` adds the tag "urgent" to the first task.
-- `tag 2  ` including 2 whitespaces after `INDEX` removes any tag from the second task.
+- `tag 2 ` including 1 whitespace after `INDEX` removes any tag from the second task.
 
 ### Exiting the Application: `bye`
 Exits the application.\
