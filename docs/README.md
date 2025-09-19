@@ -1,12 +1,10 @@
-# Duke User Guide
+# Woop User Guide
 
-// Update the title above to match the actual product name
+![woopui](Ui.png)
 
-// Product screenshot goes here
+The cutest chatbot in the world! (Will probably swim into rocks too)
 
-// Product intro goes here
-
-## Adding deadlines
+## Adding Task
 
 // Describe the action and its outcome.
 

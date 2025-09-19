@@ -1,7 +1,7 @@
 package woop.logic;
 
 /**
- * An abstract class for all Task types
+ * An abstract class for all Task types.
  */
 public abstract class Task {
     private String name;

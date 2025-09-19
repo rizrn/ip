@@ -1,12 +1,15 @@
 package woop.ui;
 
-import woop.logic.Storage;
-import woop.logic.WoopLogic;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import woop.logic.Storage;
+import woop.logic.WoopLogic;
 
 import java.io.IOException;
 
@@ -26,7 +29,8 @@ public class WoopApp extends Application {
             stage.show();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to load UI.").showAndWait();
+            Platform.exit();
         }
     }
 
@@ -40,6 +44,7 @@ public class WoopApp extends Application {
         AnchorPane ap = fxmlLoader.load();
         Scene scene = new Scene(ap);
         stage.setScene(scene);
+        stage.setTitle("Woop");
         fxmlLoader.<MainWindow>getController().setWoop(woop);
     }
 }

@@ -1,7 +1,7 @@
 package woop.logic;
 
 /**
- * A class for to do type tasks
+ * A class for to do type tasks.
  */
 public class TodoTask extends Task{
     private static final String TASK_STRING = "T";

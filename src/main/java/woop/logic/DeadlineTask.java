@@ -6,9 +6,9 @@ import java.time.format.DateTimeParseException;
 /**
  * A class for tasks of deadline type.
  */
-public class DeadlineTask extends Task{
-    private LocalDate dueDate;
+public class DeadlineTask extends Task {
     private static final String TASK_STRING = "D";
+    private LocalDate dueDate;
 
     /**
      * Initialises a DeadlineTask object using name and dueDate.

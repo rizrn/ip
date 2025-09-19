@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Class that handles save states
+ * Class that handles save states.
  */
 public class Storage {
     private static final Path PATH = Paths.get("data/data.txt");
