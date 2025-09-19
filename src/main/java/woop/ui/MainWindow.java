@@ -60,7 +60,7 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getWoopDialog(response)
         );
         if (response.equals(Ui.showGoodbye())) {
-            CompletableFuture.delayedExecutor(800, TimeUnit.MILLISECONDS)
+            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS)
                     .execute(Platform::exit);
         }
         userInput.clear();
